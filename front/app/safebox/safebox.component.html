@@ -1,0 +1,87 @@
+<div class="card">
+  <div class="header content">
+
+  </div>
+  <form class="content" id="filter">
+    <fieldset class="collapsible">
+      <legend class="panel-heading">
+        <a href="#filter-body" class="panel-title" data-toggle="collapse">Filter search</a>
+      </legend>
+      <div id="filter-body" class="collapse">
+        <div class="form-group">
+          <label for="group">Store name</label>
+          <input type="text" id="storeId" name="storeId" class="form-control" placeholder="Owner" ng2-auto-complete (valueChanged)="myCallback($event)"
+            [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)" value-property-name="id"
+            display-property-name="name">
+        </div>
+
+        <div class="form-group">
+          <label for="group">Safe Type</label>
+
+          <select name="safeType" id="safeType" class="form-control">
+            <option value="">All</option>
+            <option *ngFor="let item of safeType" value="{{item}}">{{item}}</option>
+          </select>
+
+        </div>
+        <div class="form-group">
+          <label for="group">Safe Status</label>
+          <select name="safeStatus" id="safeStatus" class="form-control">
+            <option value="">All</option>
+            <option *ngFor="let item of safeStatus" value="{{item}}">{{item}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-info" (click)="submitFilter()">Filter</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+
+<div class="card">
+  <div class="content table-responsive table-full-width">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Store Name</th>
+          <th>Cell Number</th>
+          <th>Safe Type</th>
+          <th>Safe Time</th>
+          <th>Safe Status</th>
+          <th>Last Update</th>
+          <th>Notified</th>
+          <th>Start Date</th>
+          <th>Total Duration</th>
+          <th>Created date</th>
+          <th>Modified date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="isEmpty">
+          <td colspan="8">Empty data</td>
+        </tr>
+        <tr *ngFor="let safebox of dataList; let i = index;">
+          <td *ngIf="safebox.storeDetail">{{safebox.storeDetail.name}}</td>
+          <td>{{safebox.cellNumber}}</td>
+          <td>{{safebox.safeType}}</td>
+          <td>{{safebox.safeTime}}</td>
+          <td>{{safebox.safeStatus}}</td>
+          <td>{{safebox.lastUpdate | date:'medium'}}</td>
+          <td>{{safebox.notified}}</td>
+          <td>{{safebox.startDate | date:'medium'}}</td>
+          <td>{{safebox.totalDuration}}</td>
+          <td>{{safebox.created | date:'medium'}}</td>
+          <td>{{safebox.modified | date:'medium'}}</td>
+
+        </tr>
+      </tbody>
+    </table>
+    <ul class="pagination pull-right">
+      <li [ngClass]="{'disabled': !prevPage}"><a (click)="prevPageClick()">Prev</a></li>
+      <li [ngClass]="{'disabled': !nextPage}"><a (click)="nextPageClick()">Next</a></li>
+    </ul>
+  </div>
+</div>

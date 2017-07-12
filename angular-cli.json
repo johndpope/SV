@@ -1,0 +1,78 @@
+{
+  "project": {
+    "version": "1.0.0-beta.21",
+    "name": "svapi"
+  },
+  "apps": [
+    {
+      "root": "front",
+      "outDir": "client",
+      "assets": [
+        "assets",
+        "transformer"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.json",
+      "prefix": "app",
+      "mobile": false,
+      "styles": [
+        "styles.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/font-awesome/css/font-awesome.min.css",
+        "assets/css/animate.min.css",
+        "assets/css/light-bootstrap-dashboard.css",
+        "assets/css/demo.css",
+        "assets/css/pe-icon-7-stroke.css",
+        "../node_modules/sweetalert/dist/sweetalert.css",
+        "../node_modules/dropzone/dist/dropzone.css",
+        "../node_modules/bootstrap-select/dist/css/bootstrap-select.min.css"
+      ],
+      "scripts": [
+        "assets/js/jquery-1.10.2.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "assets/js/bootstrap-notify.js",
+        "assets/js/jquery.validate.min.js",
+        "assets/js/bootstrap-table.js",
+        "../node_modules/sweetalert/dist/sweetalert.min.js",
+        "../node_modules/dropzone/dist/dropzone-amd-module.js",
+        "../node_modules/bootstrap-select/dist/js/bootstrap-select.min.js"
+        
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "addons": [],
+  "packages": [],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "prefixInterfaces": false,
+    "inline": {
+      "style": false,
+      "template": false
+    },
+    "spec": {
+      "class": false,
+      "component": true,
+      "directive": true,
+      "module": false,
+      "pipe": true,
+      "service": true
+    }
+  }
+}

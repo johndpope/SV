@@ -1,0 +1,11 @@
+.card {
+    min-height: 500px;
+}
+
+.description-card {
+    min-height: initial !important;
+}
+
+.img-product-detail {
+    margin: 0 auto;
+}

@@ -1,0 +1,179 @@
+﻿<div class="sidebar" data-color="none" data-image="assets/img/sidebar-5.jpg">
+  <div class="sidebar-wrapper">
+    <div class="logo">
+      <a routerLink="/" class="simple-text">
+                   Administrator
+                </a>
+    </div>
+
+    <ul class="nav">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="/">
+          <i class="pe-7s-graph"></i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a data-toggle="collapse" href="#productsChild" class="" aria-expanded="true">
+          <i class="pe-7s-gift"></i>
+          <p>Products
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class="collapse" id="productsChild" aria-expanded="true">
+          <ul class="nav">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+              <a routerLink="/products/create">
+                                    Add new Product
+                                </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <a routerLink="/products">
+                                    View All Products
+                                </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/brandcate">
+          <i class="pe-7s-ticket"></i>
+          <p>Brand Categories</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/brand">
+          <i class="pe-7s-glasses"></i>
+          <p>Brand</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/booster">
+          <i class="pe-7s-paper-plane"></i>
+          <p>Booster</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/missions">
+          <i class="pe-7s-news-paper"></i>
+          <p>Missions</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/assets">
+          <i class="pe-7s-star"></i>
+          <p>Assets</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/purchasepackage">
+          <i class="pe-7s-bookmarks"></i>
+          <p>Purchase Package</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/orders">
+          <i class="pe-7s-shopbag"></i>
+          <p>Orders</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/cashoutmoney">
+          <i class="pe-7s-cash"></i>
+          <p>CashOutMoney</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/injection">
+          <i class="pe-7s-check"></i>
+          <p>Commision Injection</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/leprechaunhistory">
+          <i class="pe-7s-notebook"></i>
+          <p>Leprechaun History</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/safebox">
+          <i class="pe-7s-box1"></i>
+          <p>Safe box</p>
+        </a>
+      </li>
+
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/memberbooster">
+          <i class="pe-7s-users"></i>
+          <p>Member Boosters</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/boosterrequest">
+          <i class="pe-7s-way"></i>
+          <p>Booster Request</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/member">
+          <i class="pe-7s-user"></i>
+          <p>Member</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/store">
+          <i class="pe-7s-help2"></i>
+          <p>Store</p>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/setting">
+          <i class="pe-7s-config"></i>
+          <p>Setting</p>
+        </a>
+      </li>
+
+
+
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+        <a routerLink="/versionapps">
+          <i class="pe-7s-way"></i>
+          <p>Version App</p>
+        </a>
+      </li>
+
+      <!--<li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a data-toggle="collapse" href="#formsExamples" class="" aria-expanded="true">
+          <i class="pe-7s-note2"></i>
+          <p>Forms
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class="collapse in" id="formsExamples" aria-expanded="true">
+          <ul class="nav">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <a href="#/forms/regular">
+                                    Regular Forms
+                                </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <a href="#/forms/extended">
+                                    Extended Forms
+                                </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <a href="#/forms/validation">
+                                    Validation Forms
+                                </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <a href="#/forms/wizard">
+                                    Wizard
+                                </a>
+            </li>
+          </ul>
+        </div>
+      </li>-->
+    </ul>
+  </div>
+</div>

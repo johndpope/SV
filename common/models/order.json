@@ -1,0 +1,73 @@
+{
+  "name": "Order",
+  "plural": "Orders",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": true,
+  "indexes": {
+    "memberId_idx": {
+      "memberId": 1
+    }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "transactionId": {
+      "type": "string",
+      "required": true
+    },
+    "platform": {
+      "type": "string",
+      "required": true
+    },
+    "memberId": {
+      "type": "string"
+    },
+    "purchasePackageId": {
+      "type": "string"
+    },
+    "purchasePackageLog": {
+      "type": "object"
+    },
+    "price": {
+      "type": "number"
+    },
+    "priceUnit": {
+      "type": "string"
+    },
+    "status": {
+      "type": "number"
+    },
+    "created": {
+      "type": "date"
+    },
+    "modified": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "createTrans"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

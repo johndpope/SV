@@ -1,0 +1,40 @@
+{
+  "name": "Notification",
+  "plural": "Notifications",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": true,
+      "default": {
+        "memberId": "",
+        "notificationId": 0,
+        "sentence": ""
+      }
+    },
+    "device": {
+      "type": "object",
+      "default": {
+        "id": "",
+        "os": ""
+      }
+    },
+    "status": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "created": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,74 @@
+<div class="main-content" *ngIf="missionData">
+    <ol class="breadcrumb">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/missions">Missions</a></li>
+        <li class="active text-capitalize" *ngIf="!isCreateForm" ><a routerLink="/missions/{{missionData.id}}/detail">{{missionData.name}}</a></li>
+        <li class="active text-capitalize" *ngIf="isCreateForm">Create mission</li>
+        <li class="active text-capitalize" *ngIf="!isCreateForm">Edit</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="content">
+                <form [formGroup]="formMission" id="formVersion">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Name <span class="star">*</span></label>
+                                <input class="form-control" type="text" formControlName="name" [(ngModel)]="missionData.name" required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Type <span class="star">*</span></label>
+                                <select class="form-control" formControlName="type"  [(ngModel)]="missionData.type" required="true">
+                                  <option *ngFor="let item of missionTypeList" value="{{item}}">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row" style="margin-top: 15px;">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Criterias</div>
+                            <div class="panel-body">
+                                <mission-criteria *ngFor="let item of missionData.criteria" [missionCriteria]="item"></mission-criteria>
+                                <div class="row col-lg-12">
+                                    <button type="button" (click)="addCriteria()" class="btn btn-info">Add</button>
+                                    <button type="button" (click)="removeCriteria()" class="btn btn-danger">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Rewards <span class="star">*</span></label>
+                                <input class="form-control" type="number" min="0" formControlName="rewards" [(ngModel)]="missionData.rewards" (keypress)="checkInputNumber($event)" required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Power Up</div>
+                            <div class="panel-body">
+                                <mission-powerup *ngFor="let item of missionData.powerUp" [missionPowerUp]="item"></mission-powerup>
+                                <div class="row col-lg-12">
+                                    <button type="button" (click)="addPowerUp()" class="btn btn-info">Add</button>
+                                    <button type="button" (click)="removePowerUp()" class="btn btn-danger">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <button class="btn btn-info btn-fill pull-left" style="margin-right: 5px;" type="submit" [disabled]="!formMission.valid" (click)="submitForm()">Save</button>
+                      <button class="btn btn-danger btn-fill" type="button" (click)="reset()">Reset</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+       
+        
+    </div>
+</div>

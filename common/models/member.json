@@ -1,0 +1,243 @@
+{
+  "name": "Member",
+  "plural": "Members",
+  "base": "User",
+  "strict": true,
+  "idInjection": true,
+  "indexes": {
+    "email_idx": {
+      "email": 1
+    }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "hidden": [
+    "createdByDeviceId",
+    "password",
+    "verificationToken"
+  ],
+  "properties": {
+    "type": {
+      "type": [
+        "number"
+      ],
+      "required": true
+    },
+    "password": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "number"
+    },
+    "dateOfBirth": {
+      "type": "date"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "picture": {
+      "type": "object"
+    },
+    "budget": {
+      "type": "number",
+      "default": 0
+    },
+    "storeId": {
+      "type": "string"
+    },
+    "lastLogin": {
+      "type": "date"
+    },
+    "friendsFB": {
+      "type": [
+        "object"
+      ]
+    },
+    "moneyAmount": {
+      "type": "number",
+      "default": 0
+    },
+    "noOfConnections": {
+      "type": "number",
+      "default": 0
+    },
+    "missions": {
+      "type": [
+        "object"
+      ],
+      "default": []
+    },
+    "assets": {
+      "type": [
+        "object"
+      ],
+      "default": []
+    },
+    "share": {
+      "type": "object",
+      "default": {}
+    },
+    "events": {
+      "type": [
+        "object"
+      ]
+    },
+    "device": {
+      "type": "object"
+    },
+    "createdByDeviceId": {
+      "type": "boolean"
+    },
+    "totalSale": {
+      "type": "number",
+      "default": 0
+    },
+    "totalOpenSessions": {
+      "type": "number"
+    },
+    "total_satisfied_customers": {
+      "type": "number",
+      "default": 0
+    },
+    "total_spawned_customers": {
+      "type": "number",
+      "default": 0
+    },
+    "vipCustomerEnergy": {
+      "type": "number",
+      "default": 0
+    },
+    "level": {
+      "type": "number",
+      "default": 1
+    },
+    "rank": {
+      "type": "string"
+    },
+    "noOfProdNotify": {
+      "type": "object"
+    },
+    "created": {
+      "type": "date"
+    },
+    "modified": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "socialNetworks": {
+      "type": "hasMany",
+      "model": "SocialNetworkAccount",
+      "foreignKey": "memberId"
+    },
+    "budgets": {
+      "type": "hasMany",
+      "model": "Budget",
+      "foreignKey": "memberId"
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "DENY",
+      "property": "updateAttributes"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "secureUpdate"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "updateAttributes"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "DENY",
+      "property": "deleteById"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "deleteById"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "user",
+      "permission": "DENY",
+      "property": "__create__budgets"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "getMemberTypesByEmail"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "processLogin"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "requestPasswordRecovery"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "confirmPasswordRecovery"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "confirm"
+    }
+  ],
+  "methods": {}
+}

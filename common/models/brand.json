@@ -1,0 +1,76 @@
+{
+  "name": "Brand",
+  "plural": "Brands",
+  "base": "PersistedModel",
+  "strict": true,
+  "indexes": {
+    "category_idx": {
+      "category.id": 1
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "category": {
+      "type": [
+        "object"
+      ]
+    },
+    "picture": {
+      "type": "object"
+    },
+    "website": {
+      "type": [
+        "string"
+      ],
+      "required": true,
+      "index": true
+    },
+    "affiliateNetwork": {
+      "type": "string",
+      "required": true
+    },
+    "productIds": {
+       "type": [
+        "object"
+      ]
+    },
+    "stats": {
+      "type": "object"
+    },
+    "created": {
+      "type": "date"
+    },
+    "modified": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

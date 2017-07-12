@@ -1,0 +1,281 @@
+<div class="card">
+  <div class="header content">
+    <a class="btn btn-success btn-fill btn-wd" (click)="create()"><i class="fa fa-plus" aria-hidden="true"></i>Add new Booster Request</a>
+  </div>
+  <form class="content" id="filter">
+    <fieldset class="collapsible">
+      <legend class="panel-heading">
+        <a href="#filter-body" class="panel-title" data-toggle="collapse">Filter search</a>
+      </legend>
+      <div id="filter-body" class="collapse">
+        <div class="form-group">
+          <label for="name">From member</label>
+          <input type="text" id="from" name="from" [(ngModel)]="searchFromId" class="form-control" placeholder="Email" ng2-auto-complete
+            [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)" value-property-name="id"
+            display-property-name="email">
+        </div>
+        <div class="form-group">
+          <label for="name">To member</label>
+          <input type="text" id="to" name="to" [(ngModel)]="searchToId" class="form-control" placeholder="Email" ng2-auto-complete
+            [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)" value-property-name="id"
+            display-property-name="email">
+        </div>
+        <div class="form-group">
+          <label for="category">Booster</label>
+          <select name="boosterKey" id="boosterKey" class="form-control">
+	  				<option value="">- All -</option>
+	  				<option *ngFor="let item of boosterKey" value="{{item.key}}">{{item.name}}</option>
+	  			</select>
+        </div>
+        <div class="form-group">
+          <label for="category">Status</label>
+          <select name="status" id="status" class="form-control">
+	  				<option value="">- All -</option>
+	  				<option *ngFor="let item of status" value="{{item}}">{{item}}</option>
+	  			</select>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-info" (click)="submitFilter()">Filter</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+
+<div class="card">
+  <div class="content table-responsive table-full-width">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">From</th>
+          <th>To</th>
+          <th>Booster key</th>
+          <th>Status</th>
+          <th>Created date</th>
+          <th>Modified date</th>
+          <th class="text-center">Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="isEmpty">
+          <td colspan="8">Empty data</td>
+        </tr>
+        <tr *ngFor="let boosterrequest of dataList; let i = index;">
+          <td *ngIf="boosterrequest.fromMember !== undefined"><a>{{boosterrequest.fromMember.email}}</a></td>
+          <td *ngIf="boosterrequest.toMember !== undefined">{{boosterrequest.toMember.email}}</td>
+          <td class="text-capitalize">{{boosterrequest.boosterKey}}</td>
+          <td>{{boosterrequest.status}}</td>
+          <td>{{boosterrequest.created | date:'medium'}}</td>
+          <td>{{boosterrequest.modified | date:'medium'}}</td>
+          <td class="td-actions" style="width:5%;">
+
+            <button class="btn btn-success btn-simple btn-icon" data-placement="left" rel="tooltip" title="" type="button" (click)="viewDetail(boosterrequest.id)">
+		                <i class="glyphicon glyphicon-eye-open"></i>
+		            </button>
+            <button class="btn btn-success btn-simple btn-icon" data-placement="left" rel="tooltip" title="" type="button" (click)="viewEdit(boosterrequest.id)">
+		                <i class="fa fa-edit"></i>
+		            </button>
+            <button class="btn btn-danger btn-simple btn-icon " data-placement="left" rel="tooltip" title="" type="button" (click)="deleteItem(boosterrequest.id, boosterrequest.id, i)">
+		                <i class="fa fa-times"></i>
+		            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class="pagination pull-right">
+      <li [ngClass]="{'disabled': !prevPage}"><a (click)="prevPageClick()">Prev</a></li>
+      <li [ngClass]="{'disabled': !nextPage}"><a (click)="nextPageClick()">Next</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+<!--<a class="btn btn-primary" data-toggle="modal" href='#modal-show'>Trigger modal</a>-->
+<div class="modal fade" id="modal-detail">
+  <div class="modal-dialog modal-lg" *ngIf="detailData">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Booster Request Detail : 58299fdc02fc331c9429376c</h4>
+
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">From member: </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputEmail3" *ngIf="detailData.fromMember !== undefined" value="{{detailData.fromMember.email}}"
+                    disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">To member: </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputEmail3" *ngIf="detailData.toMember !== undefined" value="{{detailData.toMember.email}}"
+                    disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Booster key :</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputPassword3" value="{{detailData.boosterKey}}" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Status :</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputPassword3" value="{{detailData.status}}" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Created date :</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputPassword3" value="{{detailData.created | date:'medium'}}" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Modified date :</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputPassword3" value="{{detailData.modified | date:'medium'}}" disabled>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modal-edit">
+  <div class="modal-dialog modal-lg" *ngIf="detailData">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Booster Request Edit : 58299fdc02fc331c9429376c</h4>
+
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-horizontal">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">From member: </label>
+                <div class="col-sm-10">
+                  <input type="text"  class="form-control" placeholder="Owner" ng2-auto-complete [(ngModel)]="detailData.fromMember"
+                    [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)"
+                    value-property-name="id" display-property-name="email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">To member: </label>
+                <div class="col-sm-10">
+                  <input type="text"  class="form-control" placeholder="Owner" ng2-auto-complete [(ngModel)]="detailData.toMember"
+                    [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)"
+                    value-property-name="id" display-property-name="email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Booster key :</label>
+                <div class="col-sm-10">
+                  <select class="form-control" [(ngModel)]="detailData.boosterKey">
+	  				<option *ngFor="let item of boosterKey" value="{{item.key}}" [selected]="detailData.boosterKey==item.key">{{item.name}}</option>
+	  			</select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Status :</label>
+                <div class="col-sm-10">
+                  <select  class="form-control" [(ngModel)]="detailData.status">
+	  				<option *ngFor="let item of status" value="{{item}}" [selected]="detailData.status==item">{{item}}</option>
+	  			</select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="update()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-create">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Booster Request Create</h4>
+
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form class="form-horizontal"  [formGroup]="formBooster" >
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">From member: </label>
+                <div class="col-sm-10">
+                  <input type="text"  class="form-control" placeholder="Owner" ng2-auto-complete formControlName="from"
+                    [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)"
+                    value-property-name="id" display-property-name="email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">To member: </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="Owner" ng2-auto-complete formControlName="to"
+                    [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)"
+                    value-property-name="id" display-property-name="email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Booster key :</label>
+                <div class="col-sm-10">
+                  <select class="form-control" formControlName="boosterKey">
+	  				<option *ngFor="let item of boosterKey" value="{{item.key}}">{{item.name}}</option>
+	  			</select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Status :</label>
+                <div class="col-sm-10">
+                  <select class="form-control" formControlName="status">
+	  				<option *ngFor="let item of status" value="{{item}}">{{item}}</option>
+	  			</select>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" [disabled]="!formBooster.valid" (click)="submitForm()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="loader hide"></div>

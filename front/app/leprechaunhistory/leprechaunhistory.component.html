@@ -1,0 +1,71 @@
+<div class="card">
+  <div class="header content">
+
+  </div>
+  <form class="content" id="filter">
+    <fieldset class="collapsible">
+      <legend class="panel-heading">
+        <a href="#filter-body" class="panel-title" data-toggle="collapse">Filter search</a>
+      </legend>
+      <div id="filter-body" class="collapse">
+        <div class="form-group">
+          <label for="group">Date</label>
+          <input type="text" class="form-control" id="dateRange" name="daterangeInput" daterangepicker [options]="daterangepickerOptions.settings" />
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-info" (click)="submitFilter()">Filter</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+
+<div class="card">
+  <div class="content table-responsive table-full-width">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Spawn Per Month</th>
+          <th>Money Per Month</th>
+          <th>Money Per Day</th>
+          <th>Remain Money Per Month</th>
+          <th>Remain Money Per Day</th>
+          <th>Real Paid</th>
+          <th>Spawned Total</th>
+          <th>Created date</th>
+          <th>Modified date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="isEmpty">
+          <td colspan="8">Empty data</td>
+        </tr>
+        <tr *ngFor="let leprechaunhistory of dataList; let i = index;">
+          <td>{{leprechaunhistory.spawnPMonth}}</td>
+          <td>{{leprechaunhistory.moneyPMonth}}</td>
+          <td>{{leprechaunhistory.moneyPDay}}</td>
+          <td>{{leprechaunhistory.remainMoneyPMonth}}</td>
+          <td>{{leprechaunhistory.remainMoneyPDay}}</td>
+          <td>{{leprechaunhistory.realPaid}}</td>
+          <td>
+            <ul>
+              <li>Lv1 : {{leprechaunhistory.spawnedTotal.lv1}}</li>
+              <li>Lv2 : {{leprechaunhistory.spawnedTotal.lv2}}</li>
+              <li>Lv3 : {{leprechaunhistory.spawnedTotal.lv3}}</li>
+              <li>Lv4 : {{leprechaunhistory.spawnedTotal.lv4}}</li>
+            </ul>
+          </td>
+          <td>{{leprechaunhistory.created | date:'medium'}}</td>
+          <td>{{leprechaunhistory.modified | date:'medium'}}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <ul class="pagination pull-right">
+      <li [ngClass]="{'disabled': !prevPage}"><a (click)="prevPageClick()">Prev</a></li>
+      <li [ngClass]="{'disabled': !nextPage}"><a (click)="nextPageClick()">Next</a></li>
+    </ul>
+  </div>
+</div>

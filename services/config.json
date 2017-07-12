@@ -1,0 +1,17 @@
+{
+  "storageAccount": "devdiroxstorage",
+  "storageAccessKey": "qSUrg9OjELG+HTtFvID/C7vv4UpE1UjNy0nHngu4MM2RzcvzGPfvioDZeMRPzseAperZZhDmXWUrZJmAxXbq6Q==",
+  "container": "svapi",
+  "containerTemp": "temp",
+  "mongodb": "mongodb://root:sV%40MG16%21z8A@10.85.1.8:2717,10.85.1.9:2717/devapi?replicaSet=rs0",
+  "schedule": 5000,
+  "maxBlod": 100,
+  "limit": 500,
+  "debugSV": true,
+  "firebase": {
+    "serverKey": "AIzaSyDIlIRhzP5sQr3ZbCuk2_jOAtdt4daWNC8"
+  },
+  "timeOut": {
+    "pushNoti": 1
+  }
+}

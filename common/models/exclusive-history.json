@@ -1,0 +1,38 @@
+{
+  "name": "ExclusiveHistory",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": true,
+  "indexes": {
+    "history_idx": {
+      "ownerId": 1,
+      "productId": 1
+    },
+    "ownerid_idx": {
+      "ownerId": 1
+    }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ownerId": {
+      "type": "string",
+      "required": true
+    },
+    "productId": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "string"
+    },
+    "created": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

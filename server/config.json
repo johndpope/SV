@@ -1,0 +1,68 @@
+{
+  "restApiRoot": "/api",
+  "host": "0.0.0.0",
+  "port": 3000,
+  "url": "http://localhost:80",
+  "remoting": {
+    "context": {
+      "enableHttpContext": false
+    },
+    "cors": false,
+    "errorHandler": {
+      "disableStackTrace": false
+    }
+  },
+  "logoutSessionsOnSensitiveChanges": false,
+  "debugSV": false,
+  "debugSVError": false,
+  "timerCheckExclusive": 180,
+  "legacyExplorer": false,
+  "emailFrom": "Stocket <game@stocket.com>",
+  "emailMerchantAddUserSubject": "Stocket registration",
+  "emailRegistrationSubject": "Stocket registration",
+  "domainShopping": "shopping",
+  "domainAdmin": "administration",
+  "publicWebRegistrationRedirectURL": "http://{userdomain}.stocket.com/activate-account",
+  "publicWebForgotPaswordRedirectURL": "http://{userdomain}.stocket.com/user/confirmpasswordrecovery/",
+  "publicWebAcceptSuccessRedirectURL": "http://{userdomain}.stocket.com/success?msg=\"Transfer a {boosterName} to {playerName} successfully.\"",
+  "publicWebAcceptFailedRedirectURL": "http://{userdomain}.stocket.com/error?msg='{errorMessage}'",
+  "emailForgotPasswordSubject": "Forgot Password request",
+  "emailForgotPasswordContent": "Please input the code below into the app to reset your password:\n\t{pwdRecoveryToken}",
+  "imagePathTemplate": "http://localhost:80/api/uploads/{containerName}/download/{fileName}",
+  "homePageURL": "http://stocket.com/",
+  "thumbApi": "http://dev-api-debian8.eastasia.cloudapp.azure.com/services/",
+  "payPal": {
+    "mode": "sandbox",
+    "clientId": "Ae6L81LKsy4CYna1zbvQsRgTfedXpyLdr8XkMJN690uw9Hlni2715I-UkoZeWcAdTwDi_vUsmAKgsog8",
+    "clientSecret": "EKQ8H5QPPz4aFUBReKxLz9KwgXaTTzY2_7AIP0ErlYnFFiViyqWMBbAWhbtw9EDr0EwZOR4mopa3TFLw",
+    "currencyCode": "USD"
+  },
+  "caching": {
+    "enable": false,
+    "settings": {
+      "stdTTL": 120,
+      "checkperiod": 30
+    },
+    "excludedRemoteMethods": [
+      "Asset.getNetWealth",
+      "Product.random",
+      "Member.getStateEngineSystem",
+      "Member.confirm",
+      "Member.find",
+      "Member.findById",
+      "Store.findByIdWithInclude",
+      "Store.tmpFunc",
+      "Store.tmpFunc2",
+      "VersionApp.checkVersion"
+    ],
+    "cacheKeyPlusCurrentUserId": [
+      "Asset.checkList",
+      "Member.missionCollectable",
+      "Mission.checkListRemote",
+      "Stockroom.getListBrands",
+      "Stockroom.getListProductsIncludedProduct",
+      "Store.getListProducts",
+      "Store.leaderboard"
+    ]
+  }
+}

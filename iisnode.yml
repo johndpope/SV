@@ -1,0 +1,9 @@
+loggingEnabled: false
+devErrorsEnabled: false
+logDirectory: iisnode
+
+# Increasing node process.
+nodeProcessCountPerApplication: 0
+#maxConcurrentRequestsPerProcess: 10240
+
+nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\6.9.4\node.exe" --max-old-space-size=1024

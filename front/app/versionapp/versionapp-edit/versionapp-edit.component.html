@@ -1,0 +1,77 @@
+<div class="main-content" *ngIf="versionData">
+  <ol class="breadcrumb">
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/versionapps">Version apps</a></li>
+    <li class="active text-capitalize" *ngIf="!isCreateForm">{{versionData.title}}</li>
+    <li class="active text-capitalize" *ngIf="isCreateForm">Create</li>
+  </ol>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="content">
+        <form [formGroup]="formVersion" id="formVersion">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Title  <span class="star">*</span></label>
+                <input class="form-control" type="text" formControlName="title" required="true">
+                <div class="description">Min length: 3 characters</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" type="text" formControlName="description"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Platform  <span class="star">*</span></label>
+                <select class="form-control" formControlName="platform" required="true">
+                  <option value="IOS">iOS</option>
+                  <option value="ANDROID">Android</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Version  <span class="star">*</span></label>
+                <input class="form-control" type="text" formControlName="version" required="true">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>URL  <span class="star">*</span></label>
+                <input class="form-control" type="text" formControlName="url" required="true">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Build  <span class="star"></span></label>
+                <input class="form-control" type="text" formControlName="build">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Release Date (yyyy-mm-dd) <span class="star">*</span></label>
+                <input class="form-control" type="text" formControlName="releaseDate" placeholder="yyyy-mm-dd" required="true">
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-info btn-fill pull-left" type="submit" [disabled]="!formVersion.valid" (click)="submitForm()">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

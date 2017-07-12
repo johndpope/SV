@@ -1,0 +1,51 @@
+{
+  "name": "MemberActionStatistic",
+  "plural": "MemberActionStatistics",
+  "base": "Model",
+  "strict": true,
+  "idInjection": true,
+  "indexes": {
+    "memberId_idx": {
+      "memberId": 1
+    }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "memberId": {
+      "type": "string",
+      "required": true
+    },
+    "actionKey": {
+      "type": "string",
+      "required": true
+    },
+    "number": {
+      "type": "number",
+      "default": "0"
+    },
+    "bestNumber": {
+      "type": "number",
+      "default": "0"
+    },
+    "created": {
+      "type": "date",
+      "required": true
+    },
+    "modified": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

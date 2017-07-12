@@ -1,0 +1,75 @@
+<div class="main-content" *ngIf="purchasePackageData">
+    <ol class="breadcrumb">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/purchasepackage">Purchase Package</a></li>
+        <li class="active text-capitalize">{{purchasePackageData.name}}</li>
+    </ol>
+    <div class="card container-fluid">
+        <div class="row">
+            <div class="content">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-success pull-right success" routerLink="/purchasepackage/{{purchasePackageData.id}}/edit">Edit</button>
+                        </div>
+                        <div class="col-sm-10">
+                            <button type="button" class="btn btn-default" routerLink="/purchasepackage">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Name : </label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">{{purchasePackageData.name}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Description : </label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">{{purchasePackageData.description}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Booster key : </label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">{{purchasePackageData.category}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Items: </label>
+                        <div class="col-sm-10">
+                            <ul class="list-group">
+                                <li class="list-group-item" *ngFor="let item of purchasePackageData.items">
+                                    {{item.boosterKey}} ({{item.number}})
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Price : </label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">{{purchasePackageData.price}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Unit : </label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">{{purchasePackageData.priceUnit}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Created date : </label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">{{purchasePackageData.created | date:'medium'}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Modified date : </label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">{{purchasePackageData.modified | date:'medium'}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

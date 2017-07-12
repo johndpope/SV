@@ -1,0 +1,98 @@
+{
+  "name": "Safebox",
+  "plural": "Safeboxes",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": true,
+  "indexes": {
+    "storeId_idx": {
+      "storeId": 1
+    },
+    "cellNumber_idx": {
+      "cellNumber": 1
+    }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "storeId": {
+      "type": "string",
+      "required": true
+    },
+    "cellNumber": {
+      "type": "number",
+      "required": true
+    },
+    "safeTypeChoice": {
+      "type": "string",
+      "required": true,
+      "default": "none"
+    },
+    "safeTypeAvailable": {
+      "type": "string",
+      "required": true,
+      "default": "copper"
+    },
+    "safeTypeNext": {
+      "type": "string",
+      "required": true,
+      "default": "silver"
+    },
+    "safeTime": {
+      "type": "number"
+    },
+    "safeStatus": {
+      "type": "string",
+      "default": ""
+    },
+    "lastUpdate": {
+      "type": "date"
+    },
+    "notified": {
+      "type": "number",
+      "default": 0
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "totalDuration": {
+      "type": "number"
+    },
+    "created": {
+      "type": "date"
+    },
+    "modified": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "store": {
+      "type": "belongsTo",
+      "model": "Store",
+      "foreignKey": "storeId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

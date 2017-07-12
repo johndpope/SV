@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="header content">
+
+  </div>
+  <form class="content" id="filter">
+    <fieldset class="collapsible">
+      <legend class="panel-heading">
+        <a href="#filter-body" class="panel-title" data-toggle="collapse">Filter search</a>
+      </legend>
+      <div id="filter-body" class="collapse">
+        <div class="form-group">
+          <label for="name">Owner</label>
+
+          <!--<div ng2-auto-complete [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)"
+            value-property-name="id" display-property-name="email" placeholder="enter text">-->
+          <input type="text" id="ownerId" name="ownerId" class="form-control" placeholder="Owner" ng2-auto-complete (valueChanged)="myCallback($event)"
+            [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)" value-property-name="id"
+            display-property-name="email">
+          <!--</div>-->
+        </div>
+        <div class="form-group">
+          <label for="group">Status</label>
+          <select class="form-control form-select" id="status" name="status">
+            <option value="" selected="selected">- Select one -</option>
+            <option *ngFor="let item of listStatus; let i=index" value="{{item}}">{{item}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-info" (click)="submitFilter()">Filter</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+
+<div class="card">
+  <div class="content table-responsive table-full-width">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">Owner</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Created date</th>
+          <th>Modified date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="isEmpty">
+          <td colspan="8">Empty data</td>
+        </tr>
+        <tr *ngFor="let injection of dataList; let i = index;">
+          <td *ngIf="injection.memberDetail !== undefined">{{injection.memberDetail.email}}</td>
+          <td>{{injection.amount}}</td>
+          <td>{{injection.status}}</td>
+          <td>{{injection.created | date:'medium'}}</td>
+          <td>{{injection.modified | date:'medium'}}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <ul class="pagination pull-right">
+      <li [ngClass]="{'disabled': !prevPage}"><a (click)="prevPageClick()">Prev</a></li>
+      <li [ngClass]="{'disabled': !nextPage}"><a (click)="nextPageClick()">Next</a></li>
+    </ul>
+  </div>
+</div>

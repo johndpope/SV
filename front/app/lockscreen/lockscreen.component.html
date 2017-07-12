@@ -1,0 +1,25 @@
+<div class="wrapper wrapper-full-page">
+
+    <div class="full-page lock-page" data-color="none" data-image="../../assets/img/home-banner-1-2.jpg">
+
+    <!--   you can change the color of the filter page using: data-color="blue | azure | green | orange | red | purple" -->
+        <div class="content">
+            <form method="#" action="#" [formGroup]="lockForm" (ngSubmit)="lock()" novalidate>
+                <div class="user-profile">
+                    <div class="author">
+                        <img class="avatar" src="../../assets/img/default-avatar.png" alt="...">
+                    </div>
+                    <h4>Administrator</h4>
+                    <div class="form-group">
+                        <input type="password" required placeholder="Enter Password" class="form-control" formControlName="lockPassword" [(ngModel)]="lockPassword" (keyup.enter)="lock()" autofocus>
+                    </div>
+                    <div [hidden]="!errorMsg" class="alert alert-danger">
+                        <strong>Error!</strong> {{errorMsg}}
+                    </div>
+                    <button type="button" class="btn btn-neutral btn-round btn-fil btn-wd" (click)="lock()">Unlock</button>
+                </div>
+            </form>
+        </div>
+    <div class="full-page-background" style="background-image: url(../../assets/img/home-banner-1-2.jpg);"></div></div>
+
+</div>

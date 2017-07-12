@@ -1,0 +1,512 @@
+.stockIt-wrapper.override {
+  position: relative !important;
+  display: inline-block !important;
+  vertical-align: top;
+  z-index: 88 !important;
+}
+.gallery_thumbs ul li{
+  display: none;
+}
+.enlarge-image-carousel > div > img {
+  display: none !important;
+}
+.stockIt-wrapper img.product-image {
+  max-width: none;
+}
+.item_pic .stockIt-wrapper img:nth-child(2){
+  position: absolute;
+  top:0;
+}
+.product-link.stockIt-wrapper img {
+  position: inherit;
+}
+.stockSVContainerkohls.stockIt-wrapper.override {
+  position: static !important;
+}
+.stockSVContainerdavidscookies .SquareImage.stockIt-wrapper{
+  display: block !important;
+}
+.stockSVContainerstevemadden .zoomViewSliderGroupWrap .stockIt-wrapper {
+  z-index: 1 !important;
+}
+.stockSVContainerthebodyshop-usa .stockIt-wrapper {
+  display: block !important;
+}
+/**esteelauder*/
+.product-full__image span.stockIt-btn {
+  left: 110px;
+  top: 100px;
+}
+/*mattel*/
+.rsMobileZoomContainer span.stockIt-btn {
+  left: 110px;
+}
+/*nordstrom*/
+.npr-product-module .stockIt-wrapper,
+.immersive-gallery-zoom .stockIt-wrapper {
+  display: block !important;
+}
+/*neimanmarcus detail*/
+.product-images .slick-active {
+  display: none !important;
+}
+.NEGlobal .stockIt-wrapper {
+  display: block !important;
+}
+.card-figure .stockIt-wrapper,
+.prodGrid .stockIt-wrapper {
+  position: absolute !important;
+}
+.wg_console_head_nav_body .stockIt-wrapper {
+  z-index: 1 !important;
+}
+.stockSVContainer {
+  z-index: 1;
+}
+div.stockIt-wrapper {
+  visibility: visible !important;
+}
+.MagicZoomPlus span.stockIt-btn {
+  display: block !important;
+}
+.product-image-zoom .stockIt-wrapper.override {
+  display: block !important;
+}
+.stockIt-wrapper .stockIt-btn {
+  background: url("8.png?t=17") !important;
+  cursor: pointer !important;
+  position: absolute !important;
+  display: block !important;
+  top: 0;
+  border: 0 !important;
+  z-index: 777 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  width: 44px !important;
+  height: 44px !important;
+  text-indent: -77777px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.stockIt-wrapper .stockIt-btn.loading,
+.stockIt-wrapper .stockIt-btn.stocking {
+  background: url("loading.gif?t=01") !important;
+}
+.stockIt-wrapper .stockIt-btn.icon-shop-exclusive-yes {
+  background: url("icon_shop_exclusive_yes.png?t=01") !important;
+}
+.stockIt-wrapper .stockIt-btn.icon-shop-exclusive-not-available {
+  background: url("icon_shop_exclusive_not-available.png?t=01") !important;
+}
+.stockIt-wrapper .stockIt-btn.icon-shop-exclusive-available {
+  background: url("icon_shop_exclusive_available.png?t=01") !important;
+}
+.stockIt-wrapper .stockIt-btn.icon-stockroom-exclusive-no {
+  background: url("icon_stockroom_exclusive_no.png?t=01") !important;
+}
+.stockIt-wrapper .stockIt-btn.icon-stockroom {
+  background: url("icon_stockroom.png?t=01") !important;
+}
+.stockIt-wrapper .stockIt-btn.icon-exclusive-no {
+  background: url("icon_exclusive_no.png?t=01") !important;
+}
+.stockIt-wrapper .stockIt-btn.icon-exclusive-available {
+  background: url("icon_exclusive_available.png?t=01") !important;
+}
+.stockIt-wrapper .stockIt-btn.stocked.error{
+  background: url("icon_exclusive_no.png?t=01") !important;
+}
+
+@-webkit-keyframes giene {
+  1% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.00133, 0, 0, 1, 0, 0, 0, 0, 1.2);
+  }
+  2% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.00267, 0, 0, 1, 0, 0, 0, 0, 1.4);
+  }
+  3% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.004, 0, 0, 1, 0, 0, 0, 0, 1.6);
+  }
+  4% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.00533, 0, 0, 1, 0, 0, 0, 0, 1.8);
+  }
+  5% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.00667, 0, 0, 1, 0, 0, 0, 0, 2);
+  }
+  6% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.008, 0, 0, 1, 0, 0, 0, 0, 2.2);
+  }
+  7% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.00933, 0, 0, 1, 0, 0, 0, 0, 2.4);
+  }
+  8% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.01067, 0, 0, 1, 0, 0, 0, 0, 2.6);
+  }
+  9% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.012, 0, 0, 1, 0, 0, 0, 0, 2.8);
+  }
+  10% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.01333, 0, 0, 1, 0, 0, 0, 0, 3);
+  }
+  11% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.01467, 0, 0, 1, 0, 0, 0, 0, 3.2);
+  }
+  12% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.016, 0, 0, 1, 0, 0, 0, 0, 3.4);
+  }
+  13% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.01733, 0, 0, 1, 0, 0, 0, 0, 3.6);
+  }
+  14% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.01867, 0, 0, 1, 0, 0, 0, 0, 3.8);
+  }
+  15% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.02, 0, 0, 1, 0, 0, 0, 0, 4);
+  }
+  16% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.02133, 0, 0, 1, 0, 0, 0, 0, 4.2);
+  }
+  17% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.02267, 0, 0, 1, 0, 0, 0, 0, 4.4);
+  }
+  18% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.024, 0, 0, 1, 0, 0, 0, 0, 4.6);
+  }
+  19% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.02533, 0, 0, 1, 0, 0, 0, 0, 4.8);
+  }
+  20% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.02667, 0, 0, 1, 0, 0, 0, 0, 5);
+  }
+  21% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.028, 0, 0, 1, 0, 0, 0, 0, 5.2);
+  }
+  22% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.02933, 0, 0, 1, 0, 0, 0, 0, 5.4);
+  }
+  23% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.03067, 0, 0, 1, 0, 0, 0, 0, 5.6);
+  }
+  24% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.032, 0, 0, 1, 0, 0, 0, 0, 5.8);
+  }
+  25% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.03333, 0, 0, 1, 0, 0, 0, 0, 6);
+  }
+  26% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.03467, 0, 0, 1, 0, 0, 0, 0, 6.2);
+  }
+  27% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.036, 0, 0, 1, 0, 0, 0, 0, 6.4);
+  }
+  28% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.03733, 0, 0, 1, 0, 0, 0, 0, 6.6);
+  }
+  29% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.03867, 0, 0, 1, 0, 0, 0, 0, 6.8);
+  }
+  30% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.04, 0, 0, 1, 0, 0, 0, 0, 7);
+  }
+  31% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.04133, 0, 0, 1, 0, 0, 0, 0, 7.2);
+  }
+  32% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.04267, 0, 0, 1, 0, 0, 0, 0, 7.4);
+  }
+  33% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.044, 0, 0, 1, 0, 0, 0, 0, 7.6);
+  }
+  34% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.04533, 0, 0, 1, 0, 0, 0, 0, 7.8);
+  }
+  35% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.04667, 0, 0, 1, 0, 0, 0, 0, 8);
+  }
+  36% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.048, 0, 0, 1, 0, 0, 0, 0, 8.2);
+  }
+  37% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.04933, 0, 0, 1, 0, 0, 0, 0, 8.4);
+  }
+  38% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.05067, 0, 0, 1, 0, 0, 0, 0, 8.6);
+  }
+  39% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.052, 0, 0, 1, 0, 0, 0, 0, 8.8);
+  }
+  40% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.05333, 0, 0, 1, 0, 0, 0, 0, 9);
+  }
+  41% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.05467, 0, 0, 1, 0, 0, 0, 0, 9.2);
+  }
+  42% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.056, 0, 0, 1, 0, 0, 0, 0, 9.4);
+  }
+  43% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.05733, 0, 0, 1, 0, 0, 0, 0, 9.6);
+  }
+  44% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.05867, 0, 0, 1, 0, 0, 0, 0, 9.8);
+  }
+  45% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.06, 0, 0, 1, 0, 0, 0, 0, 10);
+  }
+  46% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.06133, 0, 0, 1, 0, 0, 0, 0, 10.2);
+  }
+  47% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.06267, 0, 0, 1, 0, 0, 0, 0, 10.4);
+  }
+  48% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.064, 0, 0, 1, 0, 0, 0, 0, 10.6);
+  }
+  49% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.06533, 0, 0, 1, 0, 0, 0, 0, 10.8);
+  }
+  50% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.06667, 0, 0, 1, 0, 0, 0, 0, 11);
+  }
+  99% {
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.06667, 0, 0, 1, 0, 0, 0, 0, 100);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.giene {
+  -webkit-animation-duration: 3s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: giene;
+  -webkit-transform-origin: 7% 7%;
+  -webkit-perspective: 0;
+}
+
+#plImageHolder.imgHolder2, .sc-product-card a.cardProdLink figure.stockIt-wrapper, .stockSVContainerdanskin #wrap .mousetrap:last{
+  z-index: 9 !important;
+}
+
+.stockSVContainerfrenchconnection .zoomWindow ,.MagicZoomPup,.MagicZoomHint, .product-image-zoom .zoomImg, .stockSVContainerwalmart.tfrContainerDetail .js-media-zoom-icons, .js-zoom-image-carousel, .stockSVContainerlillianvernon .mousetrap{
+  visibility: hidden !important;
+}
+
+.products-grid li.stockSVContainerswissdiamond:hover .prod-info, .products-grid li.item:hover .prod-img {
+  opacity: .5;
+}
+
+.stockSVContainerzappos.stockIt-wrapper.override, .stockSVContainerzappos .stockIt-btn,.stockSVContainerpayless .eyebrow-container, body > div.zoomContainer, .stockSVContainerpaulfredrick .saleOverlay, .stockSVContainerjcpenney .gallery-product-block-link,
+.stockSVContainerhobbytron .stockIt-wrapper.override, .stockSVContainerhobbytron #btnDetail, .stockSVContainerwine .stockIt-wrapper.override, .stockSVContainerwine #btnDetail{
+  z-index: 0 !important;
+}
+
+.stockSVContainerpaulfredrick .original-price{
+  font-size: 26px !important;
+}
+.stockSVContainerpaulfredrick .sale-price{
+  font-size: 27px !important;
+}
+
+.stockSVContainerofficedepot .stockIt-wrapper.override, .stockSVContainerofficedepot .stockIt-wrapper.override #btnDetail, .stockSVContainersamsclub .stockIt-wrapper.override, .stockSVContainersamsclub .stockIt-btn
+, .stockSVContainerisabellaoliver .stockIt-wrapper.override, .stockSVContainerjustmysize .stockIt-wrapper.override{
+  z-index: 5 !important;
+}
+
+.stockSVContainerfrenchconnection .category_product_rollover_price .product_price{
+  font-size: 11px;
+}
+.stockSVContainerfilthyfragrance .so{
+  z-index:0
+}
+.stockSVContainerfilthyfragrance .isp_product_image_href{
+   position: static !important;
+   display:block !important;
+}
+.stockSVContainerbeautybridge .stockIt-wrapper{
+  left: -15px;
+}
+.stockSVContainerthepopcornfactory #wrap div {
+  z-index: 1 !important;
+  position: relative !important;
+}
+
+.dailydeal_cat .stockSVContainerhobbytron .image img {
+  bottom: inherit !important;
+}
+
+.jcp-product-recommendations .rec-hldr .rec-product .carousel-content-container .stockSVContainerjcpenney .product .thumb {
+  display: inline-block;
+  vertical-align: top;
+}
+
+section.productintro .row .mgx-product-block .orderBox.stockSVContainermagix .stockIt-wrapper.override {
+  position: absolute !important;
+}
+.stockSVContainershopfonsandporter .yourprice{
+  font-size: 12px !important;
+}
+.stockSVContainerfrankandoak #btnDetail{
+  top: 100px !important;
+  left: 120px !important;
+}
+.stockSVContainerashleyfurniturehomestore .product-grid-item__image-container .stockIt-wrapper.override {
+  position: absolute !important;
+}
+.stockSVContainerdorcousa .ProductThumb .ProductThumbImage .stockIt-wrapper.override, .stockSVContainershoebuy .stockIt-wrapper.override {
+  position: static !important;
+}
+
+.stockSVContainertarget picture.tfrAppended.stockIt-wrapper.override {
+  position: absolute !important;
+}
+.stockSVContainerdesignerliving .stockIt-wrapper.override {
+  position: static !important;
+}
+.stockSVContainerdesignerliving .stockIt-wrapper.override #btnDetail, .stockSVContainermattel .stockIt-wrapper.override, .stockSVContainermattel .stockIt-wrapper.override .stockIt-btn{
+  z-index: auto !important;
+}
+.stockSVContainerfrancescas .stockIt-wrapper.override {
+   position: static !important;
+}
+.stockSVContainerfrancescas .stockIt-wrapper.override #btnDetail{
+  z-index: auto !important;
+}
+.stockSVContainermelissaanddoug .stockIt-wrapper.override {
+  display: block !important;
+  z-index: 999 !important;
+}
+.stockSVContainerfrankandoak .slick-slide{
+  float: none !important;
+}
+.stockSVContainertimex.tfrContainerDetail .stockIt-wrapper.override, .stockSVContainertimex.tfrContainerDetail .stockIt-wrapper.override #btnDetail{
+  z-index: auto !important;
+}
+.stockSVContainertidebuy .tide_price span{
+  float: left;
+}
+.stockSVContainerkicksusa.product-essential{
+  margin-top: 50px;
+}
+.product_wrap .product_filter_wrap .hot_sale .stockSVContainerrosegal span {
+  z-index: 89;
+}
+
+.stockSVContainersurefit .stockIt-wrapper.override, .stockSVContainersurefit .stockIt-wrapper.override .stockIt-btn,
+.stockSVContainerpremierdeadsea-usa .stockIt-wrapper.override, .stockSVContainerpremierdeadsea-usa .stockIt-wrapper.override .stockIt-btn,
+.stockSVContainerscarletandjulia .stockIt-wrapper.override, .stockSVContainerscarletandjulia .stockIt-wrapper.override .stockIt-btn,
+.stockSVContainerbpisports .stockIt-wrapper.override, .stockSVContainerbpisports .stockIt-wrapper.override .stockIt-btn {
+  z-index: auto !important;
+}
+
+.tfrContainerDetail.stockSVContainercreateandcraft #btnDetail {
+  left: -50%;
+}
+.tfrContainerDetail.stockSVContainercreateandcraft .owl-item #btnDetail {
+  left: 0px;
+}
+
+.stockSVContainerhalloweencostumes .th .img:before {
+    display: inline !important;
+    padding-bottom: 0 !important;
+}
+
+.stockSVContainerhalloweencostumes .th .img img {
+  position: static !important;
+}
+.stockSVContainersaksfifthavenue .rr_image a.stockIt-wrapper.override {
+  margin-left: -180px;
+}
+
+.stockSVContainermagix .stockIt-wrapper.override {
+  position: absolute !important;
+}
+.stockSVContainersunjack .stockIt-wrapper.override{
+  position: static !important;
+}
+.stockSVContainersunjack .hp-price{
+  right: 10px;
+  left: auto;
+}
+.stockSVContainerhannaandersson p:last-of-type, .stockSVContainerdynamiteclothing.tfrContainerDetail  .stockIt-wrapper.override{
+  position: static !important;
+}
+.stockSVContainerjoann .MB_PRODUCTSALEPRICE.MB_TEXTPROCESSOR_REGPRICE{
+  font-size: 17px;
+}
+.stockSVContainerrosegal .stockIt-wrapper.override {
+  z-index: auto !important;
+}
+.stockSVContainerrosegal .stockIt-wrapper .stockIt-btn {
+  z-index: 15 !important;
+}
+.stockSVContainerbooking .stockIt-wrapper.override{
+  position: absolute !important;
+}
+.stockSVContainerpetsmart #btnDetail{
+  top: 100px;
+  left: 50px;
+}
+
+.stockSVContainerbudgetpetcare #btnDetail{
+  left: 300px;
+}
+
+.stockSVContainerbeautyencounter .stockIt-wrapper.override {
+  display:block !important;
+}
+.stockSVContainerbeautyencounter .stockIt-wrapper.override .fotorama__img {
+  max-width: 100% !important;
+  opacity: 1 !important;
+}
+.stockSVContainerbooking a.stockIt-wrapper.override{
+  position: absolute !important;
+}
+.stockSVContainerthebouqs .stockIt-wrapper.override{
+  position: initial !important;
+}
+.stockSVContainerthebouqs [class="image-gallery-content"] [class="stockIt-btn"]{
+  background: url(icon_exclusive_no.png?t=01) !important;
+}
+.stockSVContainerbabyquasar .stockIt-wrapper.override {
+  overflow: hidden;
+}
+
+.stockSVContainerdynamiteclothing.tfrContainerDetail #btnDetail {
+  left: 6%;
+  z-index: auto !important;
+}
+.stockSVContainerreeds .stockIt-wrapper.override .stockIt-btn{
+    position: relative !important;
+    width: 250px !important;
+    background-repeat: no-repeat !important;
+}
+.stockSVContainerreeds .stockIt-wrapper.override #btnDetail.stockIt-btn{
+    position: absolute !important;
+}
+.stockSVContainerreeds .rfk_pimage .stockIt-wrapper.override .stockIt-btn{
+  position: absolute !important;
+  width: 44px !important;
+  z-index: 9999999 !important;
+
+}
+.stockSVContainervissla .stockIt-wrapper.override img{
+  max-width: 100%;
+
+}
+.stockSVContainerbostonstore #btnDetail{
+    z-index: 9999999 !important;
+}
+.stockSVContainerbonton #btnDetail{
+    z-index: 9999999 !important;
+}
+.tfrContainerDetail.stockSVContainersharperimage #product_image_carousel {
+  display: block !important;
+}
+
+.stockSVContainerforeo .stockIt-wrapper.override {
+  position: static !important;
+}
+.stockSVContainerthepopcornfactory.tfrContainerDetail .LeftC .productColumn{
+  pointer-events: all !important;
+}

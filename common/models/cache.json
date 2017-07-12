@@ -1,0 +1,47 @@
+{
+  "name": "Cache",
+  "base": "Model",
+  "strict": true,
+  "idInjection": true,
+  "indexes": {
+    "created_idx": {
+      "keys": {
+        "created": 1
+      },
+      "options": {
+        "expireAfterSeconds": 604800
+      }
+    },
+    "cid": {
+      "keys": {
+        "cid": 1
+      },
+      "options": {
+        "unique": true
+      }
+    }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "cid": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "any",
+      "required": true
+    },
+    "ttl": {
+      "type": "number"
+    },
+    "created": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

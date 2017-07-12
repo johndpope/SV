@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <form id="registerFormValidation" novalidate [formGroup]="form">
+                <div class="header">Add Products</div>
+                <div class="content">
+                    <div class="form-group">
+                        <label class="control-label">Title <span class="star">*</span></label>
+                        <input autocomplete="off" class="form-control" maxLength="30" formControlName="title" required="true" type="text" aria-required="true">
+                        <span class="help-block">Allow maximum 30 characters.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Description <span class="star">*</span></label>
+                        <textarea class="form-control" id="description" formControlName="description" maxLength="2000" required="true" type="text"
+                            aria-required="true"></textarea>
+                        <span class="help-block">Allow maximum 2000 characters.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Brand <span class="star">*</span></label>
+                        <input (change)="getLink()" ng2-auto-complete formControlName="brand" [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter"
+                            value-property-name="id" display-property-name="name" placeholder="Brand name ..." class="form-control"
+                            (keyup)="onKey($event)" >
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Product originalUrl <span class="star">*</span></label>
+                        <input (change)="getLink()" autocomplete="off" class="form-control" formControlName="originalUrl" required="true" type="text" aria-required="true"
+                            url="true">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Affiliate Network  <span class="star">*</span></label>
+                                <select (change)="getLink()" formControlName="affiliateNetWork" class="form-control btn-default">
+                                    <option *ngFor="let aff of affiliateNetWork"  [value]="aff">{{aff}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Product URL <span class="star">*</span></label>
+                        <input autocomplete="off" id="url" class="form-control" formControlName="url" required="true" type="text" aria-required="true"
+                            [readonly]="true">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Initial price  <span class="star">*</span> </label>
+                                <input class="form-control" type="text" formControlName="price" required="true" number="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Pictures  <span class="star">*</span> </label>
+                                <form action="" method="post" enctype="multipart/form-data" id="PostForm" class="dropzone">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category"><span class="star">*</span> Required fields</div>
+                </div>
+
+                <div class="footer">
+                    <button class="btn btn-info btn-fill pull-right" type="submit" [disabled]="!form.valid" (click)="create()">Register</button>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

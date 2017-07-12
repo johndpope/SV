@@ -1,0 +1,104 @@
+{
+  "name": "Customer",
+  "plural": "Customers",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": true,
+  "indexes": {
+    "playerId_idx": {
+      "customerPlayerId": 1
+    }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "customerId": {
+      "type": "string",
+      "required": true
+    },
+    "customerPlayerId": {
+      "type": "string",
+      "required": true
+    },
+    "customerType": {
+      "type": "string",
+      "required": true
+    },
+    "customerStartsDate": {
+      "type": "date"
+    },
+    "customerCurrentStatus": {
+      "type": "object"
+    },
+    "customerBrand": {
+      "type": "string"
+    },
+    "customerProduct": {
+      "type": "string"
+    },
+    "customerCellNumber": {
+      "type": "number"
+    },
+    "quantity": {
+      "type": "number"
+    },
+    "level": {
+      "type": "number",
+      "description": "This field only for leprechaun"
+    },
+    "rewardMoney": {
+      "type": "number",
+      "description": "This field only for leprechaun"
+    },
+    "customer3dType": {
+      "type": "string"
+    },
+    "customerMoodFactor": {
+      "type": "number"
+    },
+    "customerProductsList": {
+      "type": [
+        "string"
+      ]
+    },
+    "customerProductsListSize": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "DENY",
+      "property": "count"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "count"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

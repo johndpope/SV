@@ -1,0 +1,86 @@
+<div class="card">
+	<div class="header content">
+		<a class="btn btn-success btn-fill btn-wd" routerLink="/brand/create"><i class="fa fa-plus" aria-hidden="true"></i>Add new Brand</a>
+	</div>
+	<form class="content" id="filter">
+		<fieldset class="collapsible">
+			<legend class="panel-heading">
+				<a href="#filter-body" class="panel-title" data-toggle="collapse">Filter search</a>
+			</legend>
+			<div id="filter-body" class="collapse">
+				<div class="form-group">
+					<label for="name">Keywords</label>
+					<input type="text" id="name" name="name" class="form-control" value="" placeholder="Name">
+				</div>
+				<div class="form-group">
+					<label for="group">Categories</label>
+					<rl-tag-input [(ngModel)]="arrayOfCategorie" [addOnEnter]='false' [addOnSpace]='false' [addOnBlur]='false' [addOnComma]='false'
+					 (keyup)="getAuto($event)" [allowDuplicates]='false' [autocomplete]='true' [autocompleteMustMatch]='true' [autocompleteItems]='listCategorie'
+					 id="Tags" name="category.name" placeholder="Find Categories" readonly>
+
+					</rl-tag-input>
+				</div>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-info" (click)="submitFilter()">Filter</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+
+<div class="card">
+	<div class="content table-responsive table-full-width">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th class="text-center">Picture</th>
+					<th>Name</th>
+					<th>Categories</th>
+					<th>Website</th>
+					<th>Affiliate Network</th>
+					<th>Created date</th>
+					<th>Modified date</th>
+					<th class="text-center">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngIf="isEmpty">
+					<td colspan="8">Empty data</td>
+				</tr>
+				<tr *ngFor="let brand of dataList; let i = index;">
+					<td class="text-center" *ngIf="brand.picture != ''">
+						<img [src]="brand.picture" class="img-responsive" width="100" height="100">
+					</td>
+					<td><a href="/#/brand/{{brand.id}}/detail">{{brand.name}}</a></td>
+					<td>
+						<p *ngFor="let item of brand.category"><a href="/#/brandcate/{{item.id}}/detail">{{item.name}}</a> ,</p>
+					</td>
+					<td>
+						<ul>
+							<li *ngFor="let item of brand.website">{{item}}</li>
+						</ul>
+					</td>
+					<td>{{brand.affiliateNetwork}}</td>
+					<td>{{brand.created | date:'medium'}}</td>
+					<td>{{brand.modified | date:'medium'}}</td>
+					<td class="td-actions" style="width:5%">
+
+						<button class="btn btn-success btn-simple btn-icon" data-placement="left" rel="tooltip" title="" type="button" data-original-title="Edit Brand"
+						 routerLink="/brand/{{brand.id}}/edit">
+		                <i class="fa fa-edit"></i>
+		            </button>
+						<button class="btn btn-danger btn-simple btn-icon " data-placement="left" rel="tooltip" title="" type="button" (click)="deleteItem(brand.id, brand.name, i)">
+		                <i class="fa fa-times"></i>
+		            </button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<ul class="pagination pull-right">
+			<li [ngClass]="{'disabled': !prevPage}"><a (click)="prevPageClick()">Prev</a></li>
+			<li [ngClass]="{'disabled': !nextPage}"><a (click)="nextPageClick()">Next</a></li>
+		</ul>
+	</div>
+</div>

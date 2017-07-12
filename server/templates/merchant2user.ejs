@@ -1,0 +1,19 @@
+Hi <%= firstName %>,<br/><br/>
+This email is in use for the following Merchant Account:<br/><br/>
+<strong>Account Information</strong>
+<table cellpadding="13"><tr><td>
+ - First name: <%= firstName %><br/>
+ - Last name: <%= lastName %><br/>
+</td></tr></table>
+<strong>Merchant Information</strong>
+<table cellpadding="13"><tr><td>
+ - Comany name: <%= companyName %><br/>
+ - Phone number: <%= phone %><br/>
+ - Store platform: <%= storePlatform %><br/>
+ - Store URL: <%= storeUrl %><br/>
+ - Product category: <%= categories %>
+</td></tr></table>
+Please click <a href="<%= redirect %>">here</a> to add User role to the same account.<br/>
+<br/>
+Sincerely,<br/>
+The Social Voucher team

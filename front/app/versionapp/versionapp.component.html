@@ -1,0 +1,83 @@
+<div class="card">
+  <div class="header content">
+    <a class="btn btn-success btn-fill btn-wd" routerLink="/versionapps/create"><i class="fa fa-plus" aria-hidden="true"></i>Add new version</a>
+  </div>
+  <form class="content" id="filter">
+    <fieldset class="collapsible">
+      <legend class="panel-heading">
+        <a href="#filter-body" class="panel-title" data-toggle="collapse">Filter search</a>
+      </legend>
+      <div id="filter-body" class="collapse">
+        <div class="form-group">
+          <label for="vtitle">Title</label>
+          <input type="text" id="title" class="form-control" value="{{where['title']}}" placeholder="Version title">
+        </div>
+        <div class="form-group">
+          <label for="platform">Platform</label>
+          <select id="platform" class="form-control">
+            <option value=""> - All - </option>
+            <option [attr.selected]="where['platform'] == 'IOS' ? true: null" value="IOS">iOS</option>
+            <option [attr.selected]="where['platform'] == 'ANDROID' ? true: null" value="ANDROID">Android</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="version">Version</label>
+          <input type="text" id="version" class="form-control" value="{{where['version']}}" placeholder="Version">
+        </div>
+        <div class="form-group">
+          <label for="releaseDate">Release date (yyyy-mm-dd)</label>
+          <input type="text" id="releaseDate" class="form-control" value="{{where['releaseDate']}}" placeholder="2017-04-15">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-info" (click)="submitFilter()">Filter</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<div class="card">
+  <div class="content table-responsive table-full-width">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Release Date</th>
+          <th>Platform</th>
+          <th class="text-center">Version</th>
+          <th>URL</th>
+          <th>Build</th>
+          <th>Created Date</th>
+          <th class="text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="isEmpty">
+          <td colspan="8">Empty data</td>
+        </tr>
+        <tr *ngFor="let version of dataList; let i = index;">
+          <td>{{version.title}}</td>
+          <td>{{version.description}}</td>
+          <td>{{version.releaseDate | date:'medium'}}</td>
+          <td class="text-capitalize">{{version.platform}}</td>
+          <td class="text-center">{{version.version}}</td>
+          <td>{{version.url}}</td>
+          <td>{{version.build||0}}</td>
+          <td>{{version.created | date:'medium'}}</td>
+          <td class="td-actions" style="width:5%">
+            <button class="btn btn-success btn-simple btn-icon" data-placement="left" rel="tooltip" title="" type="button" data-original-title="Edit Product" routerLink="/versionapps/{{version.id}}/edit">
+                <i class="fa fa-edit"></i>
+            </button>
+            <button class="btn btn-danger btn-simple btn-icon " data-placement="left" rel="tooltip" title="" type="button" data-original-title="Remove this version" (click)="deleteItem(version.id, version.title, i)">
+                <i class="fa fa-times"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class="pagination pull-right">
+      <li [ngClass]="{'disabled': !prevPage}"><a (click)="prevPageClick()">Prev</a></li>
+      <li [ngClass]="{'disabled': !nextPage}"><a (click)="nextPageClick()">Next</a></li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="content">
+            <div id="formMissionCriteria">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Action <span class="star">*</span></label>
+                            <select class="form-control"  [(ngModel)]="missionCriteria.action">
+                                <option *ngFor="let item of actionList" value="{{item}}">{{item}}</option>
+                            </select>
+                            <!-- <input class="form-control" type="text" value="{{missionCriteria.action}}" [(ngModel)]="missionCriteria.action" required="true" (keyup)="onchange()"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Action Name <span class="star">*</span></label>
+                            <input class="form-control" type="text" [(ngModel)]="missionCriteria.actionName" required="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Action Number <span class="star">*</span></label>
+                            <input class="form-control" type="number" min="0" (keypress)="checkInputNumber($event)" [(ngModel)]="missionCriteria.number" required="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

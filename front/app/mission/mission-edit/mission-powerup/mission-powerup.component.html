@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="content">
+            <div id="formMissionPowerUp">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Power Up <span class="star">*</span></label>
+                            
+                            <select class="form-control" *ngIf="(missionPowerUp.value)?true:false" [(ngModel)]="missionPowerUp.value">
+                              <option *ngFor="let item of boosterList" value="{{item.key}}">{{item.key}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

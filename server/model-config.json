@@ -1,0 +1,175 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "Email": {
+    "dataSource": "mandrillsmtp"
+  },
+  "PasswordRecovery": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "Setting": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "SocialNetworkAccount": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "Follower": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "Budget": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "Member": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Product": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Brand": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "BrandCategory": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Stockroom": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Store": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Staff": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "MemberBooster": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Upload": {
+    "dataSource": "fileupload",
+    "public": true
+  },
+  "ExclusiveHistory": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "MemberStateEngine": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "Customer": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Booster": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "VersionApp": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "CashOutMoney": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "CommissionInjection": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Safebox": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Commission": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Mission": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "MemberActionStatistic": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "PurchasePackage": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Order": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "BoosterRequest": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Notification": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "Asset": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "LeprechaunHistory": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Variable": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "SalesHistory": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Cache": {
+    "dataSource": "mongodb",
+    "public": false
+  }
+}

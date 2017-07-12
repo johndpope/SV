@@ -1,0 +1,77 @@
+{
+  "name": "Commission",
+  "plural": "Commissions",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": true,
+  "indexes": {
+    "affiliateId_idx": {
+      "affiliateId": 1
+    }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "affiliateId": {
+      "type": "string"
+    },
+    "value": {
+      "type": "number",
+      "required": true,
+      "default": "0"
+    },
+    "commissionValue": {
+      "type": "number",
+      "required": true,
+      "default": "0"
+    },
+    "purchaseDate": {
+      "type": "date"
+    },
+    "status": {
+      "type": "string"
+    },
+    "memberIdPurshaser": {
+      "type": "string",
+      "required": true
+    },
+    "productId": {
+      "type": "string",
+      "required": true
+    },
+    "memberIdReferer": {
+      "type": "string"
+    },
+    "memberIdExclusive": {
+      "type": "string"
+    },
+    "created": {
+      "type": "date",
+      "required": true
+    },
+    "modified": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

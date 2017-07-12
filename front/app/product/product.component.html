@@ -1,0 +1,95 @@
+<div class="card">
+  <div class="header">
+    <h4 class="title">List Products</h4>
+    <p class="category">Here is a subtitle for this table</p>
+    <a class="btn btn-success btn-fill btn-wd" routerLink="/products/create"><i class="fa fa-plus" aria-hidden="true"></i>Add product</a>
+  </div>
+  <form class="content" id="filter">
+    <fieldset class="collapsible">
+      <legend class="panel-heading">
+        <a href="#filter-body" class="panel-title" data-toggle="collapse">Filter search</a>
+      </legend>
+      <div id="filter-body" class="collapse">
+        <div class="form-group">
+          <label for="group">Title</label>
+          <input class="form-control" type="text" name="title" id="title" />
+        </div>
+        <div class="form-group">
+          <label for="name">Creator</label>
+          <input type="text" [(ngModel)]="creatorIdSearch" id="creatorId" name="creatorId" class="form-control" placeholder="Owner"
+            ng2-auto-complete [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)"
+            value-property-name="id" display-property-name="email">
+        </div>
+        <div class="form-group">
+          <label for="group">Exclusived</label>
+          <select name="exclusive" id="exclusive" class="form-control">
+            <option value="">All</option>
+            <option *ngFor="let item of listExclusive" value="{{item}}">{{item}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="group">Affiliate Network</label>
+          <select name="boosterKey" id="affiliateNetwork" class="form-control">
+            <option value="">All</option>
+            <option *ngFor="let item of listAffiliateNetwork" value="{{item}}">{{item}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="name">Brand</label>
+          <input type="text" [(ngModel)]="brandIdSearch" id="brand.id" name="brand.id" class="form-control" placeholder="Owner"
+            ng2-auto-complete [source]="observableSourceBrand.bind(this)" [list-formatter]="autocompleListFormatterBrand" (keyup)="onKeyBrand($event)"
+            value-property-name="id" display-property-name="name">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-info" (click)="submitFilter()">Filter</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+  <div class="content table-responsive table-full-width">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="text-center">Picture</th>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Brand</th>
+          <th class="text-center">Affiliate Network</th>
+          <th>Modified Date</th>
+          <th class="text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of productsList">
+          <td class="text-center" *ngIf="product.pictures != ''">
+            <img [src]="product.pictures" class="img-responsive" width="100" height="100">
+          </td>
+          <td style="width:25%">{{product.title}}</td>
+          <td>${{product.price}}</td>
+          <td class="text-capitalize">{{product.brand.name}}</td>
+          <td class="text-center">{{product.affiliateNetwork | uppercase}}</td>
+          <td>{{product.modified | date:'medium'}}</td>
+          <td class="td-actions" style="width:5%">
+            <button class="btn btn-info btn-simple btn-icon" data-placement="left" rel="tooltip" title="" type="button" data-original-title="View Product"
+              (click)="viewProduct(product.id)">
+                <i class="fa fa-image"></i>
+            </button>
+            <button class="btn btn-success btn-simple btn-icon" data-placement="left" rel="tooltip" title="" type="button" data-original-title="Edit Product"
+              routerLink="/product-detail/{{product.id}}/edit">
+                <i class="fa fa-edit"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!--<ul class="pagination pull-right">
+            <li><a (click)="prev()">«</a></li>
+            <li routerLinkActive="active" *ngFor="let page of pager" ><a routerLink="/products/page/{{page}}">{{page}}</a></li>
+            <li><a routerLink="/products/page/{{pager[pager.length - 1] + 1}}">»</a></li>
+          </ul>-->
+    <ul class="pagination pull-right">
+      <li [ngClass]="{'disabled': !prevPage}"><a (click)="prevPageClick()">Prev</a></li>
+      <li [ngClass]="{'disabled': !nextPage}"><a (click)="nextPageClick()">Next</a></li>
+    </ul>
+  </div>
+</div>

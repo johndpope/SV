@@ -1,0 +1,133 @@
+<style type="text/css">
+    .panel-heading {
+        padding: 10px 0 0 15px;
+        font-weight: 700;
+        font-size: 28px;
+    }
+</style>
+<div class="main-content" *ngIf="brandData">
+    <ol class="breadcrumb">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/brand">Brand</a></li>
+        <li class="active text-capitalize" *ngIf="!isCreateForm"><a routerLink="/brand/{{brandData.id}}/detail">{{brandData.name}}</a></li>
+        <li class="active text-capitalize" *ngIf="isCreateForm">Create Brand</li>
+        <li class="active text-capitalize" *ngIf="!isCreateForm">Edit</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="content">
+                <form [formGroup]="formBrand" id="formBrand">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Name <span class="star">*</span></label>
+                                <input class="form-control" type="text" formControlName="name" [(ngModel)]="brandData.name" required="true">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Description <span class="star"></span></label>
+                                <textarea class="form-control" type="text" formControlName="description" [(ngModel)]="brandData.description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Categories  <span class="star">*</span></label>
+                                <rl-tag-input formControlName="category" [(ngModel)]='category' [addOnEnter]='false' [addOnSpace]='false' [addOnBlur]='false'
+                                    [addOnComma]='false' (keyup)="getAuto($event)" [allowDuplicates]='false' [autocomplete]='true'
+                                    [autocompleteMustMatch]='true' [autocompleteItems]='listCategorie'>
+
+                                </rl-tag-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Website <span class="star">*</span></div>
+                            <div class="panel-body">
+                                <div class="panel panel-default">
+                                    <div class="panel-body" *ngFor="let item of brandData.website">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>URL <span class="star">*</span></label>
+                                                    <input type="text" value="{{item}}" name="website" class="form-control" required="required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row col-lg-12">
+                                    <button type="button" (click)="addWebsite()" class="btn btn-info">Add</button>
+                                    <button type="button" (click)="removeWebsite()" class="btn btn-danger">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Affiliate Network <span class="star">*</span></label>
+                                <select class="form-control" formControlName="affiliateNetwork" [(ngModel)]="brandData.affiliateNetwork" required="true">
+                                  <option *ngFor="let item of affiliateNetWork" value="{{item}}">{{item | uppercase}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Logo <span class="star">*</span></label>
+                                <input type="file" name="Picture" id="Picture" class="form-control" required="required" (change)="fileChange($event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="imageSrc">
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <a href="#">
+                                    <img [src]="imageSrc" alt="Nature" style="width:100%">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="">
+                                        {{fileName}}
+                                    </a>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-warning cancel col-md-6" (click)="removeUpload()">
+                                        <i class="glyphicon glyphicon-ban-circle"></i>
+                                        <span>Cancel</span>
+                                    </button>
+                        </div>
+
+
+
+                        <div class="col-md-12">
+                            <div *ngIf="progressBar" class="progress" style="height: 100%">
+                                <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="10" class="progress-bar progress-bar-success progress-bar-striped"
+                                    role="progressbar" [ngStyle]="{'width': progressBar[progressBar.length-1]+'%'}">
+                                    <span>{{progressBar[progressBar.length-1]}}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-info btn-fill pull-left" style="margin-right: 5px;" type="submit" [disabled]="!formBrand.valid" (click)="upload()">Save</button>
+                        <button class="btn btn-danger btn-fill" type="button" (click)="reset()">Reset</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</div>

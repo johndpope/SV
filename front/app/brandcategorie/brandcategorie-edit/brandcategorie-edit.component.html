@@ -1,0 +1,42 @@
+<div class="main-content" *ngIf="brandCategoryData">
+    <ol class="breadcrumb">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/brandcate">Brand Categories</a></li>
+        <li class="active text-capitalize" *ngIf="!isCreateForm" ><a routerLink="/brandcate/{{brandCategoryData.id}}/detail">{{brandCategoryData.name}}</a></li>
+        <li class="active text-capitalize" *ngIf="isCreateForm">Create Brand Categorie</li>
+        <li class="active text-capitalize" *ngIf="!isCreateForm">Edit</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="content">
+                <form [formGroup]="formBrandCategorie" id="formBrandCategorie">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Name <span class="star">*</span></label>
+                                <input class="form-control" type="text" formControlName="name" [(ngModel)]="brandCategoryData.name" required="true">
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Description <span class="star"></span></label>
+                                <textarea  class="form-control" type="text" formControlName="description" [(ngModel)]="brandCategoryData.description" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                      <button class="btn btn-info btn-fill pull-left" style="margin-right: 5px;" type="submit" [disabled]="!formBrandCategorie.valid" (click)="submitForm()">Save</button>
+                      <button class="btn btn-danger btn-fill" type="button" (click)="reset()">Reset</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+       
+        
+    </div>
+</div>

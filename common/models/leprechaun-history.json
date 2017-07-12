@@ -1,0 +1,69 @@
+{
+  "name": "LeprechaunHistory",
+  "plural": "LeprechaunHistories",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": true,
+  "indexes": {
+    "created_idx": {
+      "keys": {
+        "created": 1
+      },
+      "options": {
+        "unique": true
+      }
+    }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "spawnPMonth": {
+      "type": "number",
+      "required": true,
+      "description": "(LSCT) Total spawn per month. Not change in the same month."
+    },
+    "moneyPMonth": {
+      "type": "number",
+      "required": true,
+      "description": "(LMP) Total money per month. Not change in the same month."
+    },
+    "moneyPDay": {
+      "type": "number",
+      "required": true,
+      "description": "(LDP) Total money per day. Not change in the same month."
+    },
+    "remainMoneyPMonth": {
+      "type": "number",
+      "description": "(LSMP) Remaining money per month",
+      "default": 0
+    },
+    "remainMoneyPDay": {
+      "type": "number",
+      "description": "(LLDP) Remaining money per day",
+      "default": 0
+    },
+    "realPaid": {
+      "type": "number",
+      "description": "real paid per day",
+      "default": 0
+    },
+    "spawnedTotal": {
+      "type": "object",
+      "description": "Total spawned per level",
+      "default": {}
+    },
+    "modified": {
+      "type": "date",
+      "description": "Last modified history"
+    },
+    "created": {
+      "type": "date",
+      "description": "History per date <=> 1 date 1 document"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

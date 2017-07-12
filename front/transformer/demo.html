@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo Transformer script</title>
+</head>
+<body>
+  The guide to run the demo on web browser:
+  <p>
+    1. Drag the link <a id="stockitLink" href="javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://api-dev.stocket.com/transformer/stockIt.js?r=' + Math.floor(Math.random()*999);document.body.appendChild(document.createElement('script')).innerHTML = 'var access_token=\"abc\";'})();">Stock It</a> into bookmark bar.
+  </p>
+  <p>
+    2. Go to any site, and click "Stock It" on bookmark bar to see the result. Ex: <a href="http://www.bestbuy.com/">http://www.bestbuy.com</a>
+  </p>
+  <p>
+    3. List for testing
+    <ul>
+    	<li><a href="http://www.gardeners.com/home" target="_blank" >http://www.gardeners.com/home</a></li>
+    	<li><a href="http://www.paulfredrick.com/shop/dress-shirts/fabric=non-iron-cotton?mn=sub-nonironcotton-ds" target="_blank" >http://www.paulfredrick.com</a></li>
+    	<li><a href="http://www.sharperimage.com/si/" target="_blank" >http://www.sharperimage.com/si</a></li>
+    	<li><a href="http://www.gradshop.com/" target="_blank" >http://www.gradshop.com</a></li>
+    	<li><a href="http://www.autopartswarehouse.com/category/auto_body_parts_-and-_mirrors.html" target="_blank" >http://www.autopartswarehouse.com</a></li>
+    	<li><a href="http://www.beautytrends.com/" target="_blank" >http://www.beautytrends.com</a></li>
+    	<li><a href="http://www.gradshop.com/" target="_blank" >http://www.gradshop.com</a></li>
+    	<li><a href="http://www.collectionsetc.com/products/seasonal/fall" target="_blank" >http://www.collectionsetc.com</a></li>
+    </ul>
+  </p>
+  <script type="text/javascript">
+	/*
+	http://www.sammydress.com/
+	http://www.cashmereboutique.com/
+	http://www.shopladder.com/
+	http://www.wbshop.com/
+	*/
+    var hrefjs = "javascript:(function(){document.body.appendChild(document.createElement('script')).src='" + window.location.origin + "/transformer/stockIt.js?r=' + Math.floor(Math.random()*999); document.body.appendChild(document.createElement('script')).innerHTML = 'var access_token=\"abc\";'})();";
+    document.getElementById('stockitLink').href = hrefjs;
+  </script>
+</body>
+</html>

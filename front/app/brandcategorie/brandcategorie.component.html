@@ -1,0 +1,62 @@
+
+<div class="card">
+ <div class="header content">
+    <a class="btn btn-success btn-fill btn-wd" routerLink="/brandcate/create"><i class="fa fa-plus" aria-hidden="true"></i>Add new Brand Categorie</a>
+  </div>
+  <form class="content" id="filter">
+    <fieldset class="collapsible">
+      <legend class="panel-heading">
+        <a href="#filter-body" class="panel-title" data-toggle="collapse">Filter search</a>
+      </legend>
+      <div id="filter-body" class="collapse">
+	        <div class="form-group">
+	          <label for="name">Name</label>
+	          <input type="text" id="name" name="name" class="form-control" value="" placeholder="Name">
+	        </div>
+  		
+        <div class="form-group">
+          <button type="submit" class="btn btn-info" (click)="submitFilter()">Filter</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+
+<div class="card">
+  <div class="content table-responsive table-full-width">
+    <table class="table table-hover">
+		<thead>
+			<tr>
+			 	<th class="text-center">Name</th>
+	           	<th>Description</th>
+	         	<th>Created date</th>
+	          	<th class="text-center">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngIf="isEmpty">
+	          <td colspan="8">Empty data</td>
+	        </tr>
+			<tr *ngFor="let brandcate of dataList; let i = index;">
+				<td><a routerLink="/brandcate/{{brandcate.id}}/detail">{{brandcate.name}}</a></td>
+				<td>{{brandcate.description}}</td>
+				<td class="text-capitalize">{{brandcate.created | date:'medium'}}</td>
+				<td class="td-actions" style="width:5%">
+		            
+		            <button class="btn btn-success btn-simple btn-icon" data-placement="left" rel="tooltip" title="" type="button" data-original-title="Edit Product" routerLink="/brandcate/{{brandcate.id}}/edit">
+		                <i class="fa fa-edit"></i>
+		            </button>
+		            <button class="btn btn-danger btn-simple btn-icon " data-placement="left" rel="tooltip" title="" type="button" (click)="deleteItem(brandcate.id, brandcate.name, i)">
+		                <i class="fa fa-times"></i>
+		            </button>
+		          </td>
+	        </tr>
+		</tbody>
+	</table>
+    <ul class="pagination pull-right">
+      <li [ngClass]="{'disabled': !prevPage}"><a (click)="prevPageClick()">Prev</a></li>
+      <li [ngClass]="{'disabled': !nextPage}"><a (click)="nextPageClick()">Next</a></li>
+    </ul>
+  </div>
+</div>

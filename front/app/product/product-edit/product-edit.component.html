@@ -1,0 +1,148 @@
+<div *ngIf="product" class="main-content">
+    <ol class="breadcrumb">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/products">Product List</a></li>
+        <li class="active text-capitalize">{{product.title}}</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Edit Product</h4>
+                    </div>
+                    <div class="content">
+                        <form [formGroup]="productEditForm" id="editProductForm">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Title  <span class="star">*</span></label>
+                                        <input class="form-control" type="text" formControlName="title" required="true">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Description  <span class="star">*</span></label>
+                                        <textarea class="form-control" placeholder="Here can be your description" rows="5" formControlName="description">{{product.description}}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Brand  <span class="star">*</span></label>
+                                        <input ng2-auto-complete formControlName="brand" [(ngModel)]="product.brand" [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter"
+                                            value-property-name="id" display-property-name="name" placeholder="Brand name ..."
+                                            class="form-control" (keyup)="onKey($event)">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Product originalUrl  <span class="star">*</span></label>
+                                        <input class="form-control" type="text" formControlName="originalUrl" required="true">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Affiliate Network  <span class="star">*</span></label>
+                                        <select formControlName="affiliateNetwork" class="form-control btn-default btn-block">
+                                            <option *ngFor="let aff of affiliateNetWork"  [value]="aff">{{aff}}  
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Product URL  <span class="star">*</span></label>
+                                        <input class="form-control" type="text" formControlName="url" required="true">
+                                    </div>
+                                    <button class="btn btn-default btn-fill btn-wd" (click)="getLink()">Get Link</button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Initial price  <span class="star">*</span> </label>
+                                        <input class="form-control" type="text" formControlName="price" required="true">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Pictures  <span class="star">*</span> </label>
+                                        <form action="" method="post" enctype="multipart/form-data" id="editImageForm" class="dropzone">
+                                            <!--<input type="file" name="file" />-->
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="product.pictures">
+                                <div class="row" *ngFor="let picture of product.pictures;let i = index;">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <a href="{{listMaster.allSetting['MEDIA_LINK']}}/{{picture.container}}/{{picture.name}}" target="_blank">
+                                                <img src="{{listMaster.allSetting['MEDIA_LINK']}}/{{picture.container}}/{{picture.name}}" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="{{baseUrl}}/{{picture.container}}/{{picture.name}}" target="_blank">
+                                        {{picture.name}}
+                                    </a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-warning cancel col-md-6" (click)="removePicture(i)">
+                                        <i class="glyphicon glyphicon-ban-circle"></i>
+                                        <span>Cancel</span>
+                                    </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-info btn-fill pull-right" type="submit" [disabled]="!productEditForm.valid" (click)="editProduct()">Update Product</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-user">
+                    <div class="image">
+                        <img alt="..." src="../../assets/img/home-banner-1-2.jpg">
+                    </div>
+                    <div class="content">
+                        <div class="author">
+                            <a href="{{product.images}}" target="_blank">
+                                <img alt="..." class="avatar border-gray" [src]="product.images">
+                            </a>
+                            <a href="#">
+                                <h4 class="title">{{product.title}}<br>
+                                    <small *ngIf="selectedBrand"><a routerLink="/brand/{{selectedBrand.id}}">{{selectedBrand.name}}</a></small><br>
+                                    <small class="text-danger">${{product.price | toFixed }}</small>
+                                </h4>
+                            </a>
+                        </div>
+                        <div class="description text-center" innerHTML="{{product.description}}">
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="main-content" *ngIf="assetData">
+    <ol class="breadcrumb">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/assets">Assets</a></li>
+        <li class="active text-capitalize" *ngIf="!isCreateForm">{{assetData.name}}</li>
+        <li class="active text-capitalize" *ngIf="isCreateForm">Create</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="content">
+                <form [formGroup]="formAsset" id="formAsset">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Name <span class="star">*</span></label>
+                                <input class="form-control" type="text" formControlName="name" [(ngModel)]="assetData.name" required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Description <span class="star">*</span></label>
+                                <textarea class="form-control" formControlName="description" [(ngModel)]="assetData.description" required="true"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Price <span class="star">*</span></label>
+                                <input class="form-control" type="number" min="0" formControlName="price" [(ngModel)]="assetData.price" (keypress)="checkInputNumber($event)" required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Sales To Unlock <span class="star">*</span></label>
+                                <input class="form-control" type="number" min="0" formControlName="salesToUnlock" [(ngModel)]="assetData.salesToUnlock" (keypress)="checkInputNumber($event)" required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Description <span class="star">*</span></label>
+                                <select class="form-control" formControlName="group"  [(ngModel)]="assetData.group" required="true">
+                                  <option *ngFor="let item of assetGroupList" value="{{item}}">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>String 3D <span class="star"></span></label>
+                                <input class="form-control" type="text" formControlName="string3D" [(ngModel)]="assetData.string3D" required="false">
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>String 2D <span class="star"></span></label>
+                                <input class="form-control" type="text" formControlName="string2D" [(ngModel)]="assetData.string2D" required="false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <button class="btn btn-info btn-fill pull-left" style="margin-right: 5px;" type="submit" [disabled]="!formAsset.valid" (click)="submitForm()">Save</button>
+                      <button class="btn btn-danger btn-fill" type="button" (click)="reset()">Reset</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+       
+        
+    </div>
+</div>

@@ -1,0 +1,53 @@
+{
+  "name": "Variable",
+  "plural": "Variables",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": true,
+  "indexes": {
+    "variableName_idx": {
+      "keys": {
+        "name": 1
+      },
+      "options": {
+        "unique": true
+      }
+    }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "Variable name. Have to UPPER_STRING"
+    },
+    "description": {
+      "type": "string",
+      "description": "Variable description"
+    },
+    "locked": {
+      "type": "number",
+      "description": "0: In processing, 1: available",
+      "default": 0
+    },
+    "value": {
+      "type": "object",
+      "required": true,
+      "description": "Value of variable. If value is not object - number, string - the value will be {value: __placeHolder__}"
+    },
+    "modified": {
+      "type": "date",
+      "description": "Modified date"
+    },
+    "created": {
+      "type": "date",
+      "description": "Created date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

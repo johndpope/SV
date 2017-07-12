@@ -1,0 +1,48 @@
+
+<div *ngIf="product" class="main-content">
+    <ol class="breadcrumb">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/products">Product List</a></li>
+        <li class="active text-capitalize">{{product.title}}</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <!--<div class="header">
+                        <h4 class="title">Global Sales by Top Locations</h4>
+                        <p class="category">All products that were shipped</p>
+                    </div>-->
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-5 text-center">
+                                <img [src]="product.pictures" alt="{{product.title}}" class="img-responsive img-product-detail">
+                            </div>
+                            <div class="col-md-7">
+                                <h3 class="text-info"><a href="{{product.originalUrl}}">{{product.title}}</a></h3>
+                                <h6>SKU: {{product.id}}</h6>
+                                <h5>Brand: <a routerLink="/brand/{{product.brand.id}}" class="text-capitalize">{{product.brand.name}}</a></h5>
+                                <p><label>Affiliate Network: </label>{{product.affiliateNetwork}}</p>
+                                <p *ngIf="product.exclusive">Exclusive: {{product.exclusive.ownerId}} - {{product.exclusive.exclusiveFrom | amTimeAgo}}</p>
+                                <p *ngIf="!product.exclusive">Exclusive: Available</p>
+                                <h5 class="text-danger">${{product.price}}</h5>
+                                <div class="card description-card">
+                                    <div class="header">
+                                        <h4 class="title">Description</h4>
+                                        <p class="category">More information here</p>
+                                    </div>
+
+                                    <div class="content" innerHTML="{{product.description}}">
+                                    </div>
+                                </div>
+
+                                <a href="{{product.url}}" class="btn btn-primary">Redirect Link</a>
+                                <a routerLink="edit" class="btn btn-warning">Edit Product</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

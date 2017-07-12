@@ -1,0 +1,36 @@
+{
+  "mongodb": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "sv2016",
+    "password": "a",
+    "name": "mongodb",
+    "user": "root",
+    "connector": "mongodb"
+  }, 
+  "fileupload": {
+    "name": "fileupload",
+    "connector": "loopback-component-storage",
+    "provider": "azure",
+    "storageAccount": "devdiroxstorage",
+    "storageAccessKey": "qSUrg9OjELG+HTtFvID/C7vv4UpE1UjNy0nHngu4MM2RzcvzGPfvioDZeMRPzseAperZZhDmXWUrZJmAxXbq6Q==",
+    "container": "svapi",
+    "containerTemp": "temp"
+  },
+  "mandrillsmtp": {
+    "name": "mandrillsmtp",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "smtp.mandrillapp.com",
+        "port": 587,
+        "auth": {
+          "user": "UserName",
+          "pass": "PasswordToken"
+        }
+      }
+    ],
+    "connector": "mail"
+  }
+}
+
