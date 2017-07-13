@@ -36,7 +36,7 @@ export class CommisioninjectionComponent extends ListMasterBaseComponent {
     whereQuery = $.extend(whereQuery, this.getParamForQuery(this.where));
     if (whereQuery['ownerId']) {
       this.memberApi.find({ where: { email: { like: whereQuery['ownerId'] } } }).subscribe(res => {
-        if (res) {
+        if (res.length > 0) {
           let listOwnerId = [];
           let orQuery = null;
           res.forEach(element => {
@@ -48,7 +48,11 @@ export class CommisioninjectionComponent extends ListMasterBaseComponent {
           this.updateDataList(whereQuery);
         }
         else {
+          this.prevPage = false;
+          this.nextPage = false;
           this.isEmpty = true;
+          this.dataList = null;
+          return;
         }
       })
     }
@@ -58,32 +62,43 @@ export class CommisioninjectionComponent extends ListMasterBaseComponent {
   }
   updateDataList(whereQuery) {
     this.api.find({ "where": whereQuery, limit: (this.limit + 1), offset: this.page * this.limit, order: this.order }).subscribe(injections => {
-      let listOwnerId = [];
-      let andQuery = null;
-      for (var index = 0; index < injections.length; index++) {
-        listOwnerId.push({ id: injections[index]["ownerId"] })
+      if (injections.length > 0) {
+        let listOwnerId = [];
+        let andQuery = null;
+        for (var index = 0; index < injections.length; index++) {
+          listOwnerId.push({ id: injections[index]["ownerId"] })
+        }
+        andQuery = { or: listOwnerId };
+        this.memberApi.find({ where: andQuery }).toPromise().then(members => {
+          injections.forEach(element => {
+            var memfind = members.filter(function (mem) {
+              if (mem['id'] == element['ownerId'])
+                return mem;
+            })
+            element["memberDetail"] = (memfind) ? memfind[0] : { email: element["ownerId"] };
+          });
+        })
+        this.dataList = injections;
+        this.prevPage = this.page > 0;
+        this.nextPage = false;
+        this.isEmpty = false;
+        if (injections.length > this.limit) {
+          this.nextPage = true;
+          injections.pop();
+        }
+        this.dataList = injections;
+        if (this.dataList.length === 0) {
+          this.prevPage = false;
+          this.nextPage = false;
+          this.isEmpty = true;
+          this.dataList = null;
+        }
       }
-      andQuery = { or: listOwnerId };
-      this.memberApi.find({ where: andQuery }).toPromise().then(members => {
-        injections.forEach(element => {
-          var memfind = members.filter(function (mem) {
-            if (mem['id'] == element['ownerId'])
-              return mem;
-          })
-          element["memberDetail"] = (memfind) ? memfind[0] : { email: element["ownerId"] };
-        });
-      })
-      this.dataList = injections;
-      this.prevPage = this.page > 0;
-      this.nextPage = false;
-      this.isEmpty = false;
-      if (injections.length > this.limit) {
-        this.nextPage = true;
-        injections.pop();
-      }
-      this.dataList = injections;
-      if (this.dataList.length === 0) {
+      else {
+        this.prevPage = false;
+        this.nextPage = false;
         this.isEmpty = true;
+        this.dataList = null;
       }
       this.updateBrand();
     });

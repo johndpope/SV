@@ -60,7 +60,7 @@
           <td colspan="8">Empty data</td>
         </tr>
         <tr *ngFor="let store of dataList; let i = index;">
-          <td>{{store.name}}</td>
+          <td><a href="/#/store/{{store.id}}"> {{store.name}}</a></td>
           <td *ngIf="store.memberDetail"><a href="/#/member/{{store.ownerId}}">{{store.memberDetail.email}}</a></td>
           <td>{{store.openStatus}}</td>
           <td>{{store.noOfProducts}}</td>

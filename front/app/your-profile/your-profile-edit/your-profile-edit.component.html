@@ -1,0 +1,159 @@
+<div class="main-content" *ngIf="memberData">
+
+  <a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Change Your Password</a>
+  <div class="modal fade" id="modal-id">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Change Password</h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <app-your-profile-changepassword (onSave)="passwordChange($event)"></app-your-profile-changepassword>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="content">
+        <form [formGroup]="formMember" id="formEditMember">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Type <span class="star">*</span></label>
+
+                <select class="form-control selectControl" multiple formControlName="type">
+                  <option value="1" [selected]="formMember.value.type.indexOf(1)>=0">User</option>
+                  <option value="2" [selected]="formMember.value.type.indexOf(2)>=0">Admin</option>
+                  <option value="3" [selected]="formMember.value.type.indexOf(3)>=0">Merchant</option>
+                </select>
+
+
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>First Name <span class="star"></span></label>
+                <input class="form-control" type="text" formControlName="firstName">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Last Name <span class="star"></span></label>
+                <input class="form-control" type="text" formControlName="lastName">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Full Name <span class="star"></span></label>
+                <input class="form-control" type="text" formControlName="fullName">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Email <span class="star">*</span></label>
+                <input class="form-control" type="email" formControlName="email" required>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="isCreateForm">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Password <span class="star">*</span></label>
+                <input class="form-control" type="password" formControlName="password" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Budget <span class="star"></span></label>
+                <input class="form-control" type="number" min="1" formControlName="budget" (keypress)="checkInputNumber($event)">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Gender <span class="star"></span></label>
+                <div class="">
+                  <label>
+                   <input type="radio" value="1" formControlName="gender" [checked]="formMember.value.gender==1"> Male
+                 </label>
+                  <label>
+                    <input type="radio" value="2" formControlName="gender" [checked]="formMember.value.gender==2"> Famale
+                 </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Date Of Birth <span class="star"></span></label>
+                <input type="text" class="form-control" id="dateRange" name="daterangeInput" daterangepicker [options]="daterangepickerOptions.settings"
+                  (selected)="singleSelect($event)" formControlName="dateOfBirth" [(ngModel)]="formMember.value.dateOfBirth"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Pictures  <span class="star">*</span> </label>
+                <form action="" method="post" enctype="multipart/form-data" id="PostForm" class="dropzone">
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="memberData.avatar">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Avatar  <span class="star"></span> </label>
+
+                <img [src]="memberData['avatar']" class="img-responsive img-circle avatar-profile" alt="Image">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <button *ngIf="isCreateForm" class="btn btn-info btn-fill pull-left" style="margin-right: 5px;" type="submit" [disabled]="!formMember.valid"
+              (click)="submitForm()">Create</button>
+            <button *ngIf="!isCreateForm" class="btn btn-info btn-fill pull-left" style="margin-right: 5px;" type="submit" [disabled]="!formMember.valid"
+              (click)="submitForm()">Save</button>
+            <button class="btn btn-danger btn-fill" type="button" (click)="reset()">Reset</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+</div>

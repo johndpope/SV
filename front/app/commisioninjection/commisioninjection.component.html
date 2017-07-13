@@ -51,12 +51,12 @@
           <td colspan="8">Empty data</td>
         </tr>
         <tr *ngFor="let injection of dataList; let i = index;">
-          <td *ngIf="injection.memberDetail !== undefined">{{injection.memberDetail.email}}</td>
+          <td *ngIf="injection.memberDetail !== undefined"> <a href="#/member/{{injection.ownerId}}">  {{injection.memberDetail.email}}</a></td>
           <td>{{injection.amount}}</td>
           <td>{{injection.status}}</td>
           <td>{{injection.created | date:'medium'}}</td>
           <td>{{injection.modified | date:'medium'}}</td>
-          
+
         </tr>
       </tbody>
     </table>

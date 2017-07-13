@@ -25,14 +25,14 @@
                     </a>
                 </li>-->
 
-                <li class="dropdown">
-                    <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                <!--<li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-gavel"></i>
                         <p class="hidden-md hidden-lg">
                             Actions
                             <b class="caret"></b>
                         </p>
-                    </a>-->
+                    </a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Create New Post</a></li>
                         <li><a href="#">Manage Something</a></li>
@@ -40,24 +40,6 @@
                         <li><a href="#">Submit to live</a></li>
                         <li class="divider"></li>
                         <li><a href="#">Another Action</a></li>
-                    </ul>
-                </li>
-
-                <!--<li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="notification">5</span>
-                        <p class="hidden-md hidden-lg">
-                            Notifications
-                            <b class="caret"></b>
-                        </p>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Notification 1</a></li>
-                        <li><a href="#">Notification 2</a></li>
-                        <li><a href="#">Notification 3</a></li>
-                        <li><a href="#">Notification 4</a></li>
-                        <li><a href="#">Another notification</a></li>
                     </ul>
                 </li>-->
 
@@ -71,14 +53,13 @@
                     </a>
                     <ul class="dropdown-menu dropdown-with-icons">
                         <li>
-                            <a href="#">
+                            <a routerLink="/yourprofile">
                                 <i class="pe-7s-user"></i> Profile
                             </a>
                         </li>
-                      
                         <li>
-                            <a href="#">
-                                <i class="pe-7s-tools"></i> Change Password
+                            <a data-toggle="modal" href='#nav-changepassword'>
+                                <i class="pe-7s-settings"></i> Change Password
                             </a>
                         </li>
                         <li class="divider"></li>
@@ -100,3 +81,24 @@
         </div>
     </div>
 </nav>
+<div class="modal fade" id="nav-changepassword">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Change Password</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <app-your-profile-changepassword (onSave)="passwordChange($event)"></app-your-profile-changepassword>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

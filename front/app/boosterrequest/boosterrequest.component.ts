@@ -53,6 +53,14 @@ export class BoosterrequestComponent extends ListMasterBaseComponent {
     whereQuery = $.extend(whereQuery, this.getParamForQuery(this.where));
     let listFormMember = [];
     let listToMember = [];
+    let isFrom = false;
+    let isTo = false;
+
+    // this.prevPage = false;
+    // this.nextPage = false;
+    // this.isEmpty = true;
+    // this.dataList = null;
+
     let requestManage = new Observable(observer => {
       if (!whereQuery["from"] && !whereQuery["to"]) {
         observer.complete();
@@ -65,6 +73,7 @@ export class BoosterrequestComponent extends ListMasterBaseComponent {
             });
           }
           delete whereQuery['from'];
+          isFrom = true;
           observer.next(res);
           if (!whereQuery["to"]) {
             observer.complete();
@@ -79,6 +88,7 @@ export class BoosterrequestComponent extends ListMasterBaseComponent {
             });
           }
           delete whereQuery['to'];
+          isTo = true;
           observer.next(res);
           observer.complete();
 
@@ -99,17 +109,36 @@ export class BoosterrequestComponent extends ListMasterBaseComponent {
             })
           });
         });
-          whereQuery = $.extend(whereQuery, { or: finalOrQuery });
+        whereQuery = $.extend(whereQuery, { or: finalOrQuery });
       }
       else {
         if (listFormMember.length > 0) {
           let orQuery = { or: listFormMember };
           whereQuery = $.extend(whereQuery, orQuery);
         }
+        else {
+          if (isFrom) {
+            this.prevPage = false;
+            this.nextPage = false;
+            this.isEmpty = true;
+            this.dataList = null;
+            $('.loader').toggleClass("hide")
+            return;
+          }
+        }
         if (listToMember.length > 0) {
           let orQuery = { or: listToMember };
           whereQuery = $.extend(whereQuery, orQuery);
-
+        }
+        else {
+          if (isTo) {
+            this.prevPage = false;
+            this.nextPage = false;
+            this.isEmpty = true;
+            this.dataList = null;
+            $('.loader').toggleClass("hide")
+            return;
+          }
         }
       }
       this.api.find({ where: whereQuery, limit: (this.limit + 1), offset: this.page * this.limit, order: this.order }).subscribe(data => {
@@ -235,26 +264,6 @@ export class BoosterrequestComponent extends ListMasterBaseComponent {
     let filteredList = this.memberList.filter(el => el['email'].indexOf(keyword) !== -1);
     return Observable.of(filteredList);
   }
-  // submitFilter() {
-  //   let where = {};
-  //   let control = new Array();
-  //   control.push($("form").find($('select')));
-  //   for (var i = 0; i < control.length; i++) {
-  //     for (var j = 0; j < control[i].length; j++) {
-
-  //       if (control[i][j].value !== '') {
-  //         where[control[i][j].id] = control[i][j].value;
-  //       }
-  //     }
-  //   }
-  //   if (this.searchToId && $('#to').val()) {
-  //     where['to'] = this.searchToId.id;
-  //   }
-  //   if (this.searchFromId && $('#from').val()) {
-  //     where['from'] = this.searchFromId.id;
-  //   }
-  //   this.navigateWithQueryParams(where);
-  // };
   validForParam(param: any): boolean {
     if (typeof param === 'function') {
       return false;
