@@ -60,7 +60,7 @@
           <td class="">
             <a href="/#/cashoutmoney/{{cashoutmoney.id}}/detail"> {{cashoutmoney.id}}</a>
           </td>
-          <td *ngIf="cashoutmoney.memberDetail !== undefined"><a href="#/member/{{cashoutmoney.ownerId}}">  {{cashoutmoney.memberDetail.email}}</a></td>
+          <td *ngIf="cashoutmoney.memberDetail !== undefined">{{cashoutmoney.memberDetail.email}}</td>
           <td>{{cashoutmoney.amount}}</td>
           <td>{{cashoutmoney.status}}</td>
           <td>{{cashoutmoney.email}}</td>
@@ -70,7 +70,7 @@
               <li *ngFor="let item of cashoutmoney.operation" (click)="updateOperation(item,cashoutmoney.id)" style="cursor:pointer;color:#1006bd">{{item}}</li>
             </ul>
           </td>
-
+          
         </tr>
       </tbody>
     </table>

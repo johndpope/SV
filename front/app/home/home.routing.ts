@@ -39,7 +39,6 @@ import { MemberDetailComponent } from '../member/member-detail/member-detail.com
 import { MemberEditComponent } from '../member/member-edit/member-edit.component';
 import { StoreComponent } from '../store/store.component';
 import { StoreDetailComponent } from '../store/store-detail/store-detail.component';
-import { YourProfileComponent } from '../your-profile/your-profile.component';
 
 @NgModule({
     imports: [
@@ -94,7 +93,6 @@ import { YourProfileComponent } from '../your-profile/your-profile.component';
                     { path: 'member/:id/edit', component: MemberEditComponent },
                     { path: 'store', component: StoreComponent },
                     { path: 'store/:id', component: StoreDetailComponent },
-                    { path: 'yourprofile', component: YourProfileComponent },
 
                 ]
             }

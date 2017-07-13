@@ -52,10 +52,7 @@ export class MemberboosterComponent extends ListMasterBaseComponent {
           this.updateDataList(whereQuery);
         }
         else {
-          this.prevPage = false;
-          this.nextPage = false;
           this.isEmpty = true;
-          this.dataList = null;
           $('.loader').toggleClass("hide")
         }
       })
@@ -63,6 +60,10 @@ export class MemberboosterComponent extends ListMasterBaseComponent {
     else {
       this.updateDataList(whereQuery);
     }
+
+
+
+
   }
   updateDataList(whereQuery) {
     this.api.find({ where: whereQuery, limit: (this.limit + 1), offset: this.page * this.limit, order: this.order }).subscribe(data => {
@@ -104,19 +105,13 @@ export class MemberboosterComponent extends ListMasterBaseComponent {
           this.dataList.pop();
         }
         if (this.dataList.length === 0) {
-          this.prevPage = false;
-          this.nextPage = false;
           this.isEmpty = true;
-          this.dataList = null;
         }
         this.updateBrand();
         $('.loader').toggleClass("hide")
       }
       else {
-        this.prevPage = false;
-        this.nextPage = false;
         this.isEmpty = true;
-        this.dataList = null;
         $('.loader').toggleClass("hide")
       }
 

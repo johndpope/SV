@@ -43,8 +43,6 @@ export class StoreComponent extends ListMasterBaseComponent {
         }
         else {
           this.dataList = null;
-          this.prevPage = false;
-          this.nextPage = false;
           this.isEmpty = true;
         }
       })
@@ -69,7 +67,7 @@ export class StoreComponent extends ListMasterBaseComponent {
               if (mem['id'] == element['ownerId'])
                 return mem;
             })
-            element["memberDetail"] = (memfind.length > 0) ? memfind[0] : { email: element["ownerId"] };
+            element["memberDetail"] = (memfind.length>0) ? memfind[0] : { email: element["ownerId"] };
           });
         })
         this.dataList = data;
@@ -81,17 +79,12 @@ export class StoreComponent extends ListMasterBaseComponent {
           this.dataList.pop();
         }
         if (this.dataList.length === 0) {
-          this.dataList = null;
-          this.prevPage = false;
-          this.nextPage = false;
           this.isEmpty = true;
         }
         this.updateBrand();
       }
       else {
         this.dataList = null;
-        this.prevPage = false;
-        this.nextPage = false;
         this.isEmpty = true;
       }
     })

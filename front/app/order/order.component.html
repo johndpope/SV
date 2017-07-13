@@ -62,7 +62,7 @@
         </tr>
         <tr *ngFor="let order of ordersList">
           <td>{{order.transactionId}}</td>
-          <td *ngIf="order.memberDetail !== undefined"><a href="#/member/{{order.memberId}}"> {{order.memberDetail.email}}</a></td>
+          <td *ngIf="order.memberDetail !== undefined">{{order.memberDetail.email}}</td>
           <td class="text-capitalize">{{order.platform}}</td>
           <td class="text-center">{{order.purchasePackageLog.name}}</td>
           <td class="text-center">{{order.price}}</td>

@@ -5,8 +5,6 @@ import {Router} from '@angular/router';
 import { LoopBackConfig, LoopBackAuth } from '../shared/sdk';
 import { MemberService } from "app/services/member.service";
 import { ROUTES } from '../sidebar/sidebar-routes.config';
-declare var $: any;
-
 @Component({
   selector: 'sv-navbar',
   templateUrl: './navbar.component.html',
@@ -46,11 +44,6 @@ export class NavbarComponent implements OnInit {
     }
     return this.listTitle.map(t => (title == t.path) ? t.title : '')
                          .filter(v => v !== '')[0];
-  }
-  passwordChange(change) {
-    if (change) {
-      $("#nav-changepassword").modal('hide');
-    }
   }
 
 }

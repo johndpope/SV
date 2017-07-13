@@ -6,8 +6,8 @@ import { MomentModule } from 'angular2-moment';
 import { HomeRoutingModule } from './home.routing';
 import { RlTagInputModule } from 'angular2-tag-input';
 import { Daterangepicker } from 'ng2-daterangepicker';
-import { FileDroppa } from 'file-droppa';
-import { } from 'dropzone';
+import {FileDroppa} from 'file-droppa';
+import {} from 'dropzone';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductComponent } from '../product/product.component';
@@ -29,9 +29,6 @@ import { MemberDetailComponent } from '../member/member-detail/member-detail.com
 import { MemberEditComponent } from '../member/member-edit/member-edit.component';
 import { StoreComponent } from '../store/store.component';
 import { StoreDetailComponent } from '../store/store-detail/store-detail.component';
-import { YourProfileComponent } from '../your-profile/your-profile.component';
-import { YourProfileEditComponent } from '../your-profile/your-profile-edit/your-profile-edit.component';
-import { YourProfileChangepasswordComponent } from '../your-profile/your-profile-changepassword/your-profile-changepassword.component';
 
 //Pipe
 import { ToFixedPipe } from "app/pipes/price.pipe";
@@ -67,12 +64,8 @@ import { ToFixedPipe } from "app/pipes/price.pipe";
     MemberDetailComponent,
     MemberEditComponent,
     StoreComponent,
-    StoreDetailComponent,
-    YourProfileComponent,
-    YourProfileEditComponent,
-    YourProfileChangepasswordComponent
+    StoreDetailComponent
   ],
-  providers: [MidService],
-  exports:[YourProfileChangepasswordComponent]
+  providers: [MidService]
 })
 export class HomeModule { }

@@ -56,8 +56,10 @@ export class StoreDetailComponent extends ListMasterBaseComponent {
           }
           else {
             this.titleTrue = `Member Detail - <em>${this.storeData.id}</em>`;
+
           }
           this.updateBrand();
+          console.log(this.storeData);
         });
       }
       else {

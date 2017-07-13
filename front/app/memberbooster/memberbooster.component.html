@@ -47,7 +47,7 @@
           <td colspan="8">Empty data</td>
         </tr>
         <tr *ngFor="let safebox of dataList; let i = index;">
-          <td *ngIf="safebox.memberDetail !== undefined"> <a href="#/member/{{safebox.memberId}}">{{safebox.memberDetail.email}} </a></td>
+          <td *ngIf="safebox.memberDetail !== undefined">{{safebox.memberDetail.email}}</td>
           <td>{{safebox.boosterKey}}</td>
           <td>{{safebox.number}}</td>
           <td class=""><a (click)="showEdit(safebox.id)">Edit</a></td>
@@ -64,8 +64,8 @@
 
 
 
-<div class="modal fade" id="modal-id">
-  <!--<div class="modal fade" id="modal-id">-->
+<div class="modal fade" id="modal-id" >
+<!--<div class="modal fade" id="modal-id">-->
   <div class="modal-dialog modal-lg" *ngIf="detailData">
     <div class="modal-content">
       <div class="modal-header">
@@ -84,8 +84,7 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">Member </label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputEmail3" *ngIf="detailData.memberDetail !== undefined" value="{{detailData.memberDetail.email}}"
-                    disabled>
+                  <input type="text" class="form-control" id="inputEmail3" *ngIf="detailData.memberDetail !== undefined" value="{{detailData.memberDetail.email}}" disabled>
                 </div>
               </div>
               <div class="form-group">
@@ -94,10 +93,10 @@
                   <input type="text" class="form-control" id="inputPassword3" value="{{detailData.boosterKey}}" disabled>
                 </div>
               </div>
-              <div class="form-group">
+               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Number </label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputPassword3" [(ngModel)]="detailData.number" (keypress)="checkInputNumber($event)">
+                  <input type="text" class="form-control" id="inputPassword3"  [(ngModel)]="detailData.number" (keypress)="checkInputNumber($event)">
                 </div>
               </div>
             </div>

@@ -36,9 +36,8 @@ export class SafeboxComponent extends ListMasterBaseComponent {
     }
     let whereQuery = $.extend({}, this.where);
     whereQuery = $.extend(whereQuery, this.getParamForQuery(this.where));
-    if (whereQuery["safeStatus"]) {
-      whereQuery["safeStatus"]= whereQuery["safeStatus"]["like"].toLowerCase().split(" ").join('_');
-    }
+
+
     if (whereQuery['storeId']) {
       this.storeApi.find({ where: { name: { like: whereQuery['storeId'] } } }).subscribe(res => {
         if (res) {
@@ -53,10 +52,7 @@ export class SafeboxComponent extends ListMasterBaseComponent {
           this.updateDataList(whereQuery);
         }
         else {
-          this.prevPage = false;
-          this.nextPage = false;
           this.isEmpty = true;
-          this.dataList = null;
         }
       })
     }
@@ -80,6 +76,7 @@ export class SafeboxComponent extends ListMasterBaseComponent {
           whereQuer.push(StoreId);
         })
         this.storeApi.find({ where: { or: whereQuer } }).subscribe(stores => {
+          console.log(stores);
           data.forEach(boo => {
             stores.forEach(mem => {
               if (boo["storeId"] == mem['id']) {
@@ -106,17 +103,11 @@ export class SafeboxComponent extends ListMasterBaseComponent {
           this.dataList.pop();
         }
         if (this.dataList.length === 0) {
-          this.prevPage = false;
-          this.nextPage = false;
           this.isEmpty = true;
-          this.dataList = null;
         }
       }
       else {
-        this.prevPage = false;
-        this.nextPage = false;
         this.isEmpty = true;
-        this.dataList = null;
       }
       this.updateBrand();
     })

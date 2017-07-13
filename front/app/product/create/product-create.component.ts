@@ -86,10 +86,6 @@ export class ProductCreateComponent implements OnInit {
             init: function () {
                 this.on('sending', function (file, xhr, formData) {
                 });
-                this.on("error", function (file, message) {
-                    swal(message);
-                    this.removeFile(file);
-                });
                 this.on("sendingmultiple", function () {
                     // Gets triggered when the form is actually being sent.
                     // Hide the success button or the complete form.
