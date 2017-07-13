@@ -47,3 +47,7 @@ ul.pagination  li{
   from{ bottom:-100px; opacity:0 } 
   to{ bottom:0; opacity:1 }
 }
+.avatar-profile{
+  height: 200px;
+  width: 200px;
+}

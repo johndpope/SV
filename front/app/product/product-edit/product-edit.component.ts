@@ -100,10 +100,6 @@ export class ProductEditComponent implements OnInit {
         if (lll[0] && !this.myDropzone) {
             Dropzone.options.myAwesomeDropzone = false;
             Dropzone.autoDiscover = false;
-            // window.onload = function () {
-            //     // access Dropzone here
-            //     lll[0].dropzone({ url: "/file/post" });
-            // };
             this.myDropzone = new Dropzone("#editImageForm", {
                 url: LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
                 "/Uploads/upload",
@@ -118,18 +114,13 @@ export class ProductEditComponent implements OnInit {
                 init: function () {
                     this.on('sending', function (file, xhr, formData) {
                     });
+                    this.on("error", function (file, message) {
+                        swal(message);
+                        this.removeFile(file);
+                    });
                     this.on("sendingmultiple", function () {
-                        // Gets triggered when the form is actually being sent.
-                        // Hide the success button or the complete form.
                     });
                     this.on("successmultiple", function (files, response) {
-                        // Gets triggered when the form is actually being sent.
-                        // Hide the success button or the complete form.
-                        // datasend.affiliateNetwork = me.form.value.affiliateNetWork;
-                        // datasend.brand = {
-                        //     "id": me.form.value.brand.id,
-                        //     "name": me.form.value.brand.name
-                        // };
                         me.product = me.productEditForm.value;
                         response["data"].forEach(element => {
                             me.product.pictures.push(element);
@@ -250,7 +241,6 @@ export class ProductEditComponent implements OnInit {
             if (productCheck.brand.website)
                 website = productCheck.brand.website[0];
             if (website !== '' && productCheck.affiliateNetWork !== '' && productCheck.originalUrl !== '') {
-                // affiliateNetwork = productCheck.affiliateNetWork;
                 originalUrl = productCheck.originalUrl;
                 let mid;
                 if (affiliateNetwork.toLowerCase() == 'ls') {
@@ -277,7 +267,6 @@ export class ProductEditComponent implements OnInit {
                 this.brandApi.findById(productCheck.brand.id).toPromise().then(res => {
                     website = res["data"]["website"][0];
                     if (website !== '' && productCheck.affiliateNetWork !== '' && productCheck.originalUrl !== '') {
-                        // affiliateNetwork = productCheck.affiliateNetWork;
                         originalUrl = productCheck.originalUrl;
                         let mid;
                         if (affiliateNetwork.toLowerCase() == 'ls') {

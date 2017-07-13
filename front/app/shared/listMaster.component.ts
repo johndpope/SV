@@ -184,21 +184,28 @@ export abstract class ListMasterBaseComponent implements OnInit, OnDestroy {
   }
 
   getAllSetting() {
+    let me = this;
     let allSetting = {};
     this.settingApi.find().subscribe(ress => {
+      var allCu = {};
       ress.forEach(value => {
         if (value['configName'] === "MEDIA_LINK") {
           let baseUrl = value['configValue'];
           baseUrl = baseUrl.replace('/_container_/_filename_', '');
           allSetting[value['configName']] = baseUrl;
+          allCu[value['configName']] = baseUrl;
         }
         else {
           allSetting[value['configName']] = value['configValue'];
+          allCu[value['configName']] = value['configValue'];
         }
       })
+      ListMasterBaseComponent.allSetting = allCu;
+    }, function (error) {
+      localStorage.removeItem("accessToken");
+      me.router.navigate(['lock']);
     });
-    
-    ListMasterBaseComponent.allSetting = allSetting;
+
     return allSetting;
   }
 }

@@ -6,6 +6,7 @@ import { API_VERSION, BASE_URL } from '../shared';
 import { Member, AccessToken } from '../shared/sdk/models';
 import { MemberApi, LoopBackAuth } from '../shared/sdk/services';
 declare var $: any;
+declare var swal: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,6 +14,7 @@ declare var $: any;
 })
 export class LoginComponent implements OnInit {
   private member: Member = new Member();
+  private errorMsg: string;
   constructor(private memberApi: MemberApi, private router: Router, private _authService: LoopBackAuth) {
     LoopBackConfig.setBaseURL(BASE_URL);
     LoopBackConfig.setApiVersion(API_VERSION);
@@ -29,10 +31,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private error: string = '';
   private logIn(): void {
+
+    var $btn = $("#btnLogin").button('loading')
     this.memberApi.processLogin(this.member, "user").subscribe(
       (token: any) => {
+        $btn.button('reset');
         if (token.data) {
           let user = token.data.user;
           if (user.type && user.type.indexOf(2) > -1) {
@@ -42,11 +46,9 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['']);
           } else {
             this.showError("You must be an administrator to enter this area!!");
-            
           }
         } else {
-          this.error = 'Username or password is incorrect!';
-          
+          this.errorMsg = token.error.message;
         }
       }
     )

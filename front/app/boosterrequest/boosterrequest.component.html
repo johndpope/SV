@@ -62,8 +62,8 @@
           <td colspan="8">Empty data</td>
         </tr>
         <tr *ngFor="let boosterrequest of dataList; let i = index;">
-          <td *ngIf="boosterrequest.fromMember !== undefined"><a>{{boosterrequest.fromMember.email}}</a></td>
-          <td *ngIf="boosterrequest.toMember !== undefined">{{boosterrequest.toMember.email}}</td>
+          <td *ngIf="boosterrequest.fromMember !== undefined"><a href="#/member/{{boosterrequest.from}}">{{boosterrequest.fromMember.email}}</a></td>
+          <td *ngIf="boosterrequest.toMember !== undefined"><a href="#/member/{{boosterrequest.to}}">{{boosterrequest.toMember.email}}</a></td>
           <td class="text-capitalize">{{boosterrequest.boosterKey}}</td>
           <td>{{boosterrequest.status}}</td>
           <td>{{boosterrequest.created | date:'medium'}}</td>
@@ -173,17 +173,15 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">From member: </label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control" placeholder="Owner" ng2-auto-complete [(ngModel)]="detailData.fromMember"
-                    [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)"
-                    value-property-name="id" display-property-name="email">
+                  <input type="text" class="form-control" placeholder="Owner" ng2-auto-complete [(ngModel)]="detailData.fromMember" [source]="observableSource.bind(this)"
+                    [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)" value-property-name="id" display-property-name="email">
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">To member: </label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control" placeholder="Owner" ng2-auto-complete [(ngModel)]="detailData.toMember"
-                    [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)"
-                    value-property-name="id" display-property-name="email">
+                  <input type="text" class="form-control" placeholder="Owner" ng2-auto-complete [(ngModel)]="detailData.toMember" [source]="observableSource.bind(this)"
+                    [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)" value-property-name="id" display-property-name="email">
                 </div>
               </div>
               <div class="form-group">
@@ -197,7 +195,7 @@
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Status :</label>
                 <div class="col-sm-10">
-                  <select  class="form-control" [(ngModel)]="detailData.status">
+                  <select class="form-control" [(ngModel)]="detailData.status">
 	  				<option *ngFor="let item of status" value="{{item}}" [selected]="detailData.status==item">{{item}}</option>
 	  			</select>
                 </div>
@@ -229,21 +227,19 @@
         <div class="row">
 
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <form class="form-horizontal"  [formGroup]="formBooster" >
+            <form class="form-horizontal" [formGroup]="formBooster">
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">From member: </label>
                 <div class="col-sm-10">
-                  <input type="text"  class="form-control" placeholder="Owner" ng2-auto-complete formControlName="from"
-                    [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)"
-                    value-property-name="id" display-property-name="email">
+                  <input type="text" class="form-control" placeholder="Owner" ng2-auto-complete formControlName="from" [source]="observableSource.bind(this)"
+                    [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)" value-property-name="id" display-property-name="email">
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">To member: </label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="Owner" ng2-auto-complete formControlName="to"
-                    [source]="observableSource.bind(this)" [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)"
-                    value-property-name="id" display-property-name="email">
+                  <input type="text" class="form-control" placeholder="Owner" ng2-auto-complete formControlName="to" [source]="observableSource.bind(this)"
+                    [list-formatter]="autocompleListFormatter" (keyup)="onKey($event)" value-property-name="id" display-property-name="email">
                 </div>
               </div>
               <div class="form-group">

@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { SDKBrowserModule } from './shared/sdk/index';
-import {Md5} from 'ts-md5/dist/md5';
+import { Md5 } from 'ts-md5/dist/md5';
 
-import {HomeModule} from './home/home.module';
+import { HomeModule } from './home/home.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -43,7 +43,9 @@ import { PurchasePackageItemsComponent } from "app/purchasepackage/purchasepacka
 import { BrandDetailComponent } from "app/brand/brand-detail/brand-detail.component";
 import { SettingComponent } from './setting/setting.component';
 import { CashoutmoneyDetailComponent } from './cashoutmoney/cashoutmoney-detail/cashoutmoney-detail.component';
-
+import { SuccessPageComponent } from './success-page/success-page.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { MemberConfirmpasswordrecoveryComponent } from './member/member-confirmpasswordrecovery/member-confirmpasswordrecovery.component';
 
 
 @NgModule({
@@ -77,14 +79,16 @@ import { CashoutmoneyDetailComponent } from './cashoutmoney/cashoutmoney-detail/
     BrandDetailComponent,
     SettingComponent,
     CashoutmoneyDetailComponent,
-   
-    
+    SuccessPageComponent,
+    ErrorPageComponent,
+    MemberConfirmpasswordrecoveryComponent
+
   ],
   imports: [
     HomeModule,
     BrowserModule,
-    FormsModule, 
-    ReactiveFormsModule, 
+    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     routing,
     SDKBrowserModule.forRoot(),
