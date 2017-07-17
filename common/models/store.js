@@ -9,6 +9,10 @@ var validator = require('validator')
   , _ = require('underscore');
 require('date-utils');
 
+         var airbrake = require('airbrake').createClient(
+        '149693', // Project ID
+        'b9b4e212b7bac3c5a069325a4e8e63fd' // Project key
+      );
 KEY_UNLOCK_STATUS_COLLECTABLE = 'collectable';
 KEY_UNLOCK_STATUS_COLLECTED = 'collected';
 KEY_UNLOCK_STATUS_ONGOING = 'ongoing';
@@ -2148,6 +2152,7 @@ module.exports = function (Store) {
       error.code = "BAD_REQUEST";
       return next(error);
     }
+
     var VALID_LEVEL_UPGRADE_ELEVATOR = [2, 3, 4, 5, 6, 7, 8, 9, 10];
     async.parallel([
       function (cb) {
@@ -2165,9 +2170,19 @@ module.exports = function (Store) {
         error.code = Store.prefixError + "_UE01";
         return next(error);
       }
+      if(!location) {
+        location = foundStore.elevator.location;
+      }
       if (location.length > 30) {
         var error = new Error("Location must less than 30 charater");
         error.code = Store.prefixError + "_UE02";
+        error.severity = 'critical';    
+      airbrake.notify(error, function (error, url) {
+      
+        if (error) throw error;
+      
+        // Error has been delivered, url links to the error in airbrake
+      });
         return next(error);
       }
       var listElevator = Store.app.models.Setting.configs['STORE_ELEVATOR'];
@@ -2177,6 +2192,7 @@ module.exports = function (Store) {
           var elevatorNext = listElevator[i + 1];
         }
       }
+  
       if (elevatorNext) {
         var costUpgradeElevator = elevatorNext.cost;
         if (userInfo.budget < costUpgradeElevator) {
@@ -3220,7 +3236,7 @@ module.exports = function (Store) {
       accessType: 'WRITE',
       accepts: [
         {
-          arg: 'location', type: 'string', required: true, root: true,
+          arg: 'location', type: 'string', root: true,
           description: 'Location of elevator'
         }
         , { arg: 'ctx', type: 'object', description: 'Current context.', http: { source: 'req' } }
